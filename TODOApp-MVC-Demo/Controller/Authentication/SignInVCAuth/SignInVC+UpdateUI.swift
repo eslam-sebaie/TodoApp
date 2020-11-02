@@ -15,7 +15,7 @@ extension SignInVC {
         emailView.setupViews(radius: 8)
         passView.setupViews(radius: 8)
         blurView.setupViews(radius: 16)
-        signInDesign.setupButtons()
+        signInDesign.setupViews(radius: 8)
     }
     
     func valid() -> Bool {

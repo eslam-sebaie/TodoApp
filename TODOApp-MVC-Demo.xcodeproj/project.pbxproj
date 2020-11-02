@@ -146,11 +146,27 @@
 		96B3CC81254DA0E100EE0471 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				96C6840E25509B5C00A32452 /* ProfileVC */,
+				96C6841025509B6B00A32452 /* ProfileVC+TableView */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		96C6840E25509B5C00A32452 /* ProfileVC */ = {
+			isa = PBXGroup;
+			children = (
 				96B3CC82254DA1E200EE0471 /* ProfileVC.swift */,
+			);
+			path = ProfileVC;
+			sourceTree = "<group>";
+		};
+		96C6841025509B6B00A32452 /* ProfileVC+TableView */ = {
+			isa = PBXGroup;
+			children = (
 				96B3CC88254DB0A000EE0471 /* ProfileVC+TableView.swift */,
 				96B3CC85254DAD4200EE0471 /* ProfileTableViewCell.swift */,
 			);
-			path = Profile;
+			path = "ProfileVC+TableView";
 			sourceTree = "<group>";
 		};
 		B76E56842548A24A00C13D43 = {

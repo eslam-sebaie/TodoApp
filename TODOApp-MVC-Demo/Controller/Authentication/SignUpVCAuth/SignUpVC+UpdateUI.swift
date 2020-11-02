@@ -16,7 +16,7 @@ extension SignUpVC {
         emailView.setupViews(radius: 8)
         passView.setupViews(radius: 8)
         blurView.setupViews(radius: 16)
-        signUpDesign.setupButtons()
+        signUpDesign.setupViews(radius: 8)
         
     }
     

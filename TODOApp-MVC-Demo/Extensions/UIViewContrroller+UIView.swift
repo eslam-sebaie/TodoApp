@@ -26,9 +26,9 @@ extension UIView {
         
     }
     
-    func setupButtons() {
-        layer.cornerRadius = 8
-        layer.masksToBounds = true
-    }
+//    func setupButtons() {
+//        layer.cornerRadius = 8
+//        layer.masksToBounds = true
+//    }
     
 }

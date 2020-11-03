@@ -12,7 +12,7 @@
         <!--Sign InVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="SignInVC" id="BYZ-38-t0r" customClass="SignInVC" customModule="TODOApp_MVC_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignInVC" modalPresentationStyle="currentContext" id="BYZ-38-t0r" customClass="SignInVC" customModule="TODOApp_MVC_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -49,7 +49,7 @@
                                                         <constraint firstAttribute="height" constant="48" id="laA-mA-Dkf"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                                 </textField>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -191,7 +191,7 @@
         <!--Sign UpVC-->
         <scene sceneID="cMv-G5-22U">
             <objects>
-                <viewController storyboardIdentifier="SignUpVC" id="T6n-BO-Yei" customClass="SignUpVC" customModule="TODOApp_MVC_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignUpVC" modalPresentationStyle="currentContext" id="T6n-BO-Yei" customClass="SignUpVC" customModule="TODOApp_MVC_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Zpo-mT-JwU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -256,7 +256,7 @@
                                                         <constraint firstAttribute="height" constant="48" id="zjv-B4-1GB"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                                 </textField>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -270,7 +270,7 @@
                                             </constraints>
                                         </view>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MsO-rv-Ff9">
-                                            <rect key="frame" x="78.5" y="408" width="193" height="41"/>
+                                            <rect key="frame" x="78.5" y="421" width="193" height="41"/>
                                             <color key="backgroundColor" red="0.29411764709999999" green="0.80000000000000004" blue="0.80392156859999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="41" id="U9V-Yc-AVI"/>
@@ -284,7 +284,7 @@
                                             </connections>
                                         </button>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GLL-tF-vdf">
-                                            <rect key="frame" x="32" y="240" width="286" height="60"/>
+                                            <rect key="frame" x="32" y="253" width="286" height="60"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pass" translatesAutoresizingMaskIntoConstraints="NO" id="qEt-CE-SHg">
                                                     <rect key="frame" x="8" y="12.5" width="35" height="35"/>
@@ -313,7 +313,7 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZOm-DH-zdu">
-                                            <rect key="frame" x="32" y="316" width="286" height="60"/>
+                                            <rect key="frame" x="32" y="329" width="286" height="60"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="age" translatesAutoresizingMaskIntoConstraints="NO" id="8QA-EW-V2B">
                                                     <rect key="frame" x="8" y="12.5" width="35" height="35"/>
@@ -328,7 +328,7 @@
                                                         <constraint firstAttribute="height" constant="48" id="rsD-Gx-NZD"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 </textField>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -341,6 +341,15 @@
                                                 <constraint firstItem="8QA-EW-V2B" firstAttribute="leading" secondItem="ZOm-DH-zdu" secondAttribute="leading" constant="8" id="tl4-qk-ZqL"/>
                                             </constraints>
                                         </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upper, Lower Case, Number, More 8 Chararcters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="wAr-0e-xCr">
+                                            <rect key="frame" x="32" y="224" width="286" height="13"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="13" identifier="passHeight" id="0vA-jh-Okg"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" systemColor="systemRedColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="Rfb-33-UpR" firstAttribute="top" secondItem="gLC-p9-dY1" secondAttribute="bottom" constant="16" id="3pU-9y-hWO"/>
@@ -352,14 +361,17 @@
                                         <constraint firstAttribute="trailing" secondItem="Rfb-33-UpR" secondAttribute="trailing" constant="32" id="aMG-av-eLq"/>
                                         <constraint firstItem="gLC-p9-dY1" firstAttribute="centerX" secondItem="ffk-zH-Xb5" secondAttribute="centerX" id="eJX-vq-Qxp"/>
                                         <constraint firstItem="ZOm-DH-zdu" firstAttribute="top" secondItem="GLL-tF-vdf" secondAttribute="bottom" constant="16" id="eTV-A8-TrN"/>
+                                        <constraint firstItem="GLL-tF-vdf" firstAttribute="top" secondItem="wAr-0e-xCr" secondAttribute="bottom" constant="16" id="fwf-a1-Xvv"/>
                                         <constraint firstItem="MsO-rv-Ff9" firstAttribute="top" secondItem="ZOm-DH-zdu" secondAttribute="bottom" constant="32" id="fyj-pY-e1n"/>
-                                        <constraint firstItem="GLL-tF-vdf" firstAttribute="top" secondItem="NA7-Jt-7OU" secondAttribute="bottom" constant="16" id="idr-a4-ukB"/>
+                                        <constraint firstItem="wAr-0e-xCr" firstAttribute="leading" secondItem="NA7-Jt-7OU" secondAttribute="leading" id="gY7-Or-Hep"/>
                                         <constraint firstItem="NA7-Jt-7OU" firstAttribute="leading" secondItem="ffk-zH-Xb5" secondAttribute="leading" constant="32" id="j7U-Yz-0Mh"/>
+                                        <constraint firstItem="wAr-0e-xCr" firstAttribute="top" secondItem="NA7-Jt-7OU" secondAttribute="bottom" id="kxo-e4-maC"/>
                                         <constraint firstItem="Rfb-33-UpR" firstAttribute="leading" secondItem="ffk-zH-Xb5" secondAttribute="leading" constant="32" id="pWw-Sl-dfP"/>
                                         <constraint firstItem="gLC-p9-dY1" firstAttribute="top" secondItem="ffk-zH-Xb5" secondAttribute="top" constant="40" id="pty-aS-REc"/>
                                         <constraint firstAttribute="trailing" secondItem="ZOm-DH-zdu" secondAttribute="trailing" constant="32" id="r15-MD-wJq"/>
                                         <constraint firstAttribute="trailing" secondItem="NA7-Jt-7OU" secondAttribute="trailing" constant="32" id="rtl-0Q-uiO"/>
                                         <constraint firstItem="MsO-rv-Ff9" firstAttribute="centerX" secondItem="ffk-zH-Xb5" secondAttribute="centerX" id="uM7-5R-Nb9"/>
+                                        <constraint firstItem="wAr-0e-xCr" firstAttribute="trailing" secondItem="NA7-Jt-7OU" secondAttribute="trailing" id="wxN-FX-HZj"/>
                                         <constraint firstItem="GLL-tF-vdf" firstAttribute="leading" secondItem="ffk-zH-Xb5" secondAttribute="leading" constant="32" id="zvS-cn-tbG"/>
                                     </constraints>
                                 </view>
@@ -401,6 +413,7 @@
                         <outlet property="nameView" destination="Rfb-33-UpR" id="1Au-76-O1o"/>
                         <outlet property="passView" destination="GLL-tF-vdf" id="nEw-P3-jhz"/>
                         <outlet property="passwordTextField" destination="yQn-9i-PtX" id="1LQ-0G-yny"/>
+                        <outlet property="passwordValidation" destination="wAr-0e-xCr" id="toZ-wZ-qF3"/>
                         <outlet property="signUpDesign" destination="MsO-rv-Ff9" id="Q9d-qE-SgS"/>
                     </connections>
                 </viewController>
@@ -418,6 +431,9 @@
         <image name="user" width="96" height="96"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

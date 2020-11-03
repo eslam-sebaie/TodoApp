@@ -16,31 +16,27 @@ class SignUpVC: UIViewController {
     @IBOutlet weak var emailView: UIView!
     @IBOutlet weak var passView: UIView!
     @IBOutlet weak var ageView: UIView!
-    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var ageTextField: UITextField!
-    
     @IBOutlet weak var signUpDesign: UIButton!
     
+    @IBOutlet weak var passwordValidation: UILabel!
     
     // MARK:- Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
-        
     }
     
-    
-    
+    // MARK:- SignUp Method
     @IBAction func signUpPressed(_ sender: Any) {
         if valid(){
             APIManager.SignUp(name: nameTextField.text!, email: emailTextField.text!, password: passwordTextField.text!, age: Int(ageTextField.text!)!) {
-                print("postSuccess")
+                self.dismiss(animated: true, completion: nil)
             }
         }
-        dismiss(animated: true, completion: nil)
     }
     
     // MARK:- Public Methods

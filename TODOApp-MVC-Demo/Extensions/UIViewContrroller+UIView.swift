@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 extension UIView {
     func dropShadow(scale: Bool = true) {
+        // MARK:- Public Shadow Method
         layer.masksToBounds = false
         layer.shadowColor = UIColor.darkGray.cgColor
         layer.shadowOpacity = 0.4
@@ -19,16 +20,10 @@ extension UIView {
         layer.rasterizationScale = scale ? UIScreen.main.scale : 1
     }
     
-    
+    // MARK:- Public SetupViews Method
     func setupViews(radius: CGFloat) {
         layer.cornerRadius = radius
         layer.masksToBounds = true
         
     }
-    
-//    func setupButtons() {
-//        layer.cornerRadius = 8
-//        layer.masksToBounds = true
-//    }
-    
 }

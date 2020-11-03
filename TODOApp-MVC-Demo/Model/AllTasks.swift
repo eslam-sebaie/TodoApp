@@ -9,6 +9,7 @@
 import Foundation
 struct AllTasks: Codable {
     var description: String
+    
     enum CodingKeys: String, CodingKey {
         case description
     }

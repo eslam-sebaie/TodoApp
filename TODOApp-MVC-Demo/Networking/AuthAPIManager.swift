@@ -50,7 +50,6 @@ class APIManager {
             guard response.error == nil else {
                 print(response.error!)
                 completion()
-
                 return
             }
             
@@ -67,7 +66,6 @@ class APIManager {
         
         let headers: HTTPHeaders = [HeaderKeys.Authorization: "Bearer \(UserDefaultsManager.shared().token ?? "")"]
         
-        
         AF.request(URLs.profile, method: HTTPMethod.get, parameters: nil, encoding: JSONEncoding.default, headers: headers).response {
             response in
             guard response.error == nil else {
@@ -80,13 +78,9 @@ class APIManager {
                 print("didn't get any data from API")
                 return
             }
-            
-            
             do {
-                print(data)
                 let decoder = JSONDecoder()
                 let loginData = try decoder.decode(UserData.self, from: data)
-                print(loginData.age)
                 completion(nil, loginData)
             } catch let error {
                 print(error)
@@ -94,11 +88,8 @@ class APIManager {
         }
     }
     
-    
     class func postLogout(completion: @escaping () -> Void) {
-        print("logout")
         let headers: HTTPHeaders = [HeaderKeys.Authorization: "Bearer \(UserDefaultsManager.shared().token ?? "")"]
-        
         
         AF.request(URLs.logout, method: HTTPMethod.post, parameters: nil, encoding: JSONEncoding.default, headers: headers).response {
             response in

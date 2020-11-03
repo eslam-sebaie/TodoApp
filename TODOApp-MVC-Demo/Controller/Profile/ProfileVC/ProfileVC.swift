@@ -17,14 +17,13 @@ class ProfileVC: UIViewController {
     var headArray = ["Name", "Email" ,"Age"]
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
-    
+    // MARK:- WillApear Methods
     override func viewWillAppear(_ animated: Bool) {
         getProfileData()
     }
     
-    
+    // MARK:- Logout Methods
     @IBAction func logoutPressed(_ sender: Any) {
         APIManager.postLogout {
             UserDefaultsManager.shared().token = nil
@@ -39,10 +38,9 @@ class ProfileVC: UIViewController {
             self.profileDictionary["Email"] = self.profileOfData.email
             self.profileDictionary["Age"] = "\(self.profileOfData.age)"
             self.profileTableView.reloadData()
-        }
-        
+        }        
     }
-   
+
     // MARK:- Public Methods
     class func create() -> ProfileVC {
         let profileVC: ProfileVC = UIViewController.create(storyboardName: Storyboards.main, identifier: ViewControllers.profileVC)

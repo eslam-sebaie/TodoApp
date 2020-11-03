@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 extension TodoListVC: UITableViewDataSource {
+    // MARK:- TableView DataSource Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         determineHeight(mainView, identifier: HeightKeys.listHeight, heightNumber: 50 + (todoTasks.count * 60))
         return todoTasks.count
@@ -20,8 +21,6 @@ extension TodoListVC: UITableViewDataSource {
         cell.todoImage.image = UIImage(named: "todolist")
         return cell
     }
-    
-    
 }
-extension TodoListVC: UITableViewDelegate {}
+
 

@@ -17,14 +17,11 @@ class SignInVC: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    
-    
     // MARK:- Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
     }
-    
     
     // MARK:- SignIn Button
     @IBAction func signInPressed(_ sender: Any) {
@@ -33,11 +30,11 @@ class SignInVC: UIViewController {
                 if let error = error {
                     print(error.localizedDescription)
                 } else if let loginData = loginData {
-                    print(loginData.token)
-                    
                     UserDefaultsManager.shared().token = loginData.token
                 }
-                
+//                else {
+//                    self.show_Alert("Wrong Email Or Password.")
+//                }
                 self.present(TodoListVC.create(), animated: true, completion: nil)
             }
         }
@@ -49,13 +46,11 @@ class SignInVC: UIViewController {
         self.present(signUp, animated: true, completion: nil)
     }
     
-    
     // MARK:- Public Methods
     class func create() -> SignInVC {
         let signInVC: SignInVC = UIViewController.create(storyboardName: Storyboards.authentication, identifier: ViewControllers.signInVC)
         return signInVC
     }
-
 }
 
 

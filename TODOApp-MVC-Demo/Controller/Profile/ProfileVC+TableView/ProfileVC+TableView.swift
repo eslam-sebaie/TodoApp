@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 extension ProfileVC: UITableViewDataSource{
+    // MARK:- TableView DataSource Methods
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }

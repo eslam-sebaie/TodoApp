@@ -20,6 +20,8 @@
 		96B3CC83254DA1E200EE0471 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B3CC82254DA1E200EE0471 /* ProfileVC.swift */; };
 		96B3CC86254DAD4200EE0471 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B3CC85254DAD4200EE0471 /* ProfileTableViewCell.swift */; };
 		96B3CC89254DB0A000EE0471 /* ProfileVC+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B3CC88254DB0A000EE0471 /* ProfileVC+TableView.swift */; };
+		96C433DB25542321006E62BB /* UIViewController+ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C433DA25542321006E62BB /* UIViewController+ImageView.swift */; };
+		96C433DE2554238B006E62BB /* ProfileVC+UpdateUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C433DD2554238B006E62BB /* ProfileVC+UpdateUI.swift */; };
 		B76E56912548A24A00C13D43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76E56902548A24A00C13D43 /* AppDelegate.swift */; };
 		B76E56952548A24A00C13D43 /* TodoListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76E56942548A24A00C13D43 /* TodoListVC.swift */; };
 		B76E56982548A24A00C13D43 /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B76E56962548A24A00C13D43 /* Authentication.storyboard */; };
@@ -51,6 +53,8 @@
 		96B3CC82254DA1E200EE0471 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		96B3CC85254DAD4200EE0471 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		96B3CC88254DB0A000EE0471 /* ProfileVC+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileVC+TableView.swift"; sourceTree = "<group>"; };
+		96C433DA25542321006E62BB /* UIViewController+ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ImageView.swift"; sourceTree = "<group>"; };
+		96C433DD2554238B006E62BB /* ProfileVC+UpdateUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileVC+UpdateUI.swift"; sourceTree = "<group>"; };
 		B76E568D2548A24A00C13D43 /* TODOApp-MVC-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TODOApp-MVC-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B76E56902548A24A00C13D43 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B76E56942548A24A00C13D43 /* TodoListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListVC.swift; sourceTree = "<group>"; };
@@ -122,17 +126,17 @@
 			children = (
 				B76E56942548A24A00C13D43 /* TodoListVC.swift */,
 				962D3BF2254C8B07003E5EB5 /* TodoVC+UpdateUI.swift */,
-				962D3BEB254C8840003E5EB5 /* TodoVC+TableView.swift */,
 			);
 			path = TodoVC;
 			sourceTree = "<group>";
 		};
-		962D3BE7254C878A003E5EB5 /* TodoVC+TableViewCell */ = {
+		962D3BE7254C878A003E5EB5 /* TodoVC+TableView */ = {
 			isa = PBXGroup;
 			children = (
+				962D3BEB254C8840003E5EB5 /* TodoVC+TableView.swift */,
 				962D3BE8254C87C0003E5EB5 /* TodoVCTableViewCell.swift */,
 			);
-			path = "TodoVC+TableViewCell";
+			path = "TodoVC+TableView";
 			sourceTree = "<group>";
 		};
 		962D3C08254CA9F0003E5EB5 /* Core */ = {
@@ -156,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				96B3CC82254DA1E200EE0471 /* ProfileVC.swift */,
+				96C433DD2554238B006E62BB /* ProfileVC+UpdateUI.swift */,
 			);
 			path = ProfileVC;
 			sourceTree = "<group>";
@@ -226,6 +231,7 @@
 			children = (
 				B76E56B42548A63E00C13D43 /* UIViewController+Functions.swift */,
 				962D3BD7254C72A2003E5EB5 /* UIViewContrroller+UIView.swift */,
+				96C433DA25542321006E62BB /* UIViewController+ImageView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -306,7 +312,7 @@
 			isa = PBXGroup;
 			children = (
 				962D3BE5254C877D003E5EB5 /* TodoVC */,
-				962D3BE7254C878A003E5EB5 /* TodoVC+TableViewCell */,
+				962D3BE7254C878A003E5EB5 /* TodoVC+TableView */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -428,6 +434,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				96B3CC83254DA1E200EE0471 /* ProfileVC.swift in Sources */,
+				96C433DB25542321006E62BB /* UIViewController+ImageView.swift in Sources */,
 				962D3BF0254C8911003E5EB5 /* ListAPIManager.swift in Sources */,
 				962D3BEC254C8840003E5EB5 /* TodoVC+TableView.swift in Sources */,
 				962D3BD8254C72A2003E5EB5 /* UIViewContrroller+UIView.swift in Sources */,
@@ -435,6 +442,7 @@
 				962D3BDD254C7C23003E5EB5 /* SignUpVC+UpdateUI.swift in Sources */,
 				962D3C06254CA7A8003E5EB5 /* AllTasks.swift in Sources */,
 				B76E56952548A24A00C13D43 /* TodoListVC.swift in Sources */,
+				96C433DE2554238B006E62BB /* ProfileVC+UpdateUI.swift in Sources */,
 				962D3BE9254C87C0003E5EB5 /* TodoVCTableViewCell.swift in Sources */,
 				B76E56912548A24A00C13D43 /* AppDelegate.swift in Sources */,
 				B76E56C52548BACC00C13D43 /* UserData.swift in Sources */,

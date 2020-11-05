@@ -9,8 +9,9 @@
 import Foundation
 struct AllTasks: Codable {
     var description: String
-    
+    var id: String
     enum CodingKeys: String, CodingKey {
         case description
+        case id = "_id"
     }
 }

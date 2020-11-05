@@ -28,13 +28,11 @@ class SignInVC: UIViewController {
         if valid() {
             APIManager.login(with: emailTextField.text!, password: passwordTextField.text!) { (error, loginData) in
                 if let error = error {
+                    self.show_Alert("Wonge Email Or Password.")
                     print(error.localizedDescription)
                 } else if let loginData = loginData {
                     UserDefaultsManager.shared().token = loginData.token
                 }
-//                else {
-//                    self.show_Alert("Wrong Email Or Password.")
-//                }
                 self.present(TodoListVC.create(), animated: true, completion: nil)
             }
         }

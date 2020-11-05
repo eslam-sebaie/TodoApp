@@ -29,8 +29,10 @@ struct URLs {
     static let login = base + "/login"
     static let register = base + "/register"
     static let addTask = "https://api-nodejs-todolist.herokuapp.com/task"
-    static let profile = "https://api-nodejs-todolist.herokuapp.com/user/me"
-    static let logout = "https://api-nodejs-todolist.herokuapp.com/user/logout"
+    static let profile = base + "/me"
+    static let logout = base + "/logout"
+    static let postImage = base + "/me/avatar"
+    
 }
 
 // Header Keys
@@ -54,4 +56,7 @@ struct UserDefaultsKeys {
 }
 struct HeightKeys {
     static let listHeight = "todoHeight"
+    static let signUpHeight = "passHeight"
 }
+
+

@@ -54,38 +54,26 @@ class ListAPIManager {
                 print(error)
             }
         }
-        
-        
-        
     }
     
-//    class func delTask(id: Int, completion: @escaping() -> Void) {
-//     let hedders: HTTPHeaders = [HeaderKeys.contentType: "application/json", HeaderKeys.Authorization: "Bearer \(UserDefaultsManager.shared().token ?? "")"]
-//
-//        let params = ["_id": "5f9c6a8eb1e5de00170d507b"]
-//
-//         AF.request("https://api-nodejs-todolist.herokuapp.com/task/5ddcd1566b55da0017597239", method: .delete, parameters: params, encoding: JSONEncoding.default, headers: hedders).response {
-//             response in
-//
-//             guard response.error == nil else {
-//                 print(response.error!)
-//                 completion()
-//
-//                 return
-//             }
-//
-//             guard response.data != nil else {
-//                 print("didn't get any data from API")
-//                 return
-//             }
-//
-//                completion()
-//
-//
-//         }
-//
-//
-//     }
-//
-//
+    class func delTask(id: String, completion: @escaping() -> Void) {
+     let hedders: HTTPHeaders = [HeaderKeys.contentType: "application/json", HeaderKeys.Authorization: "Bearer \(UserDefaultsManager.shared().token ?? "")"]
+
+
+        AF.request(URLs.addTask + "/\(id)", method: .delete, parameters: nil, encoding: JSONEncoding.default, headers: hedders).response {
+             response in
+
+             guard response.error == nil else {
+                 print(response.error!)
+                 completion()
+
+                 return
+             }
+             guard response.data != nil else {
+                 print("didn't get any data from API")
+                 return
+             }
+                completion()
+         }
+     }
 }

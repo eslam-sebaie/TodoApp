@@ -12,6 +12,7 @@ extension TodoListVC: UITableViewDataSource {
     // MARK:- TableView DataSource Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         determineHeight(mainView, identifier: HeightKeys.listHeight, heightNumber: 50 + (todoTasks.count * 60))
+      
         return todoTasks.count
     }
     
@@ -21,6 +22,18 @@ extension TodoListVC: UITableViewDataSource {
         cell.todoImage.image = UIImage(named: "todolist")
         return cell
     }
+}
+
+extension TodoListVC: UITableViewDelegate {
+    // MARK:- TableView Delete Methods
+     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            ListAPIManager.delTask(id: todoTasks[indexPath.row].id) {
+                self.getList()
+            }
+        }
+    }
+    
 }
 
 

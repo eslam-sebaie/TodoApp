@@ -22,6 +22,7 @@ extension TodoListVC {
         ListAPIManager.getTasks { (err, taskes) in
             self.todoTasks = taskes
             self.todoTableView.reloadData()
+            print(self.todoTasks)
         }
     }
     

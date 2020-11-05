@@ -222,11 +222,23 @@
                                                 </connections>
                                             </button>
                                         </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" style="plain" id="mTT-nL-Stn">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="tWQ-Pq-0Ra">
+                                                <rect key="frame" x="302" y="7" width="92" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Edit">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="editPressed:" destination="YTY-1E-qzy" eventType="touchUpInside" id="623-g5-TTp"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8W5-r6-Okq">
-                                <rect key="frame" x="32" y="120" width="350" height="220"/>
+                                <rect key="frame" x="32" y="272" width="350" height="220"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="220" id="caa-0H-sjD"/>
@@ -287,20 +299,30 @@
                                     <outlet property="delegate" destination="YTY-1E-qzy" id="jGo-3d-gvI"/>
                                 </connections>
                             </tableView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dProfilePic" translatesAutoresizingMaskIntoConstraints="NO" id="F5p-Wg-LQB">
+                                <rect key="frame" x="147" y="120" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="IJY-ce-gRl"/>
+                                    <constraint firstAttribute="height" constant="120" id="yZD-MI-LXS"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rVe-6e-yAq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="8W5-r6-Okq" firstAttribute="leading" secondItem="rVe-6e-yAq" secondAttribute="leading" constant="32" id="3tD-aw-Jgj"/>
+                            <constraint firstItem="F5p-Wg-LQB" firstAttribute="centerX" secondItem="lqM-em-jVg" secondAttribute="centerX" id="G42-h2-nGm"/>
                             <constraint firstItem="rVe-6e-yAq" firstAttribute="trailing" secondItem="JxB-kI-RSs" secondAttribute="trailing" id="Jtq-Re-yVG"/>
                             <constraint firstItem="JxB-kI-RSs" firstAttribute="top" secondItem="rVe-6e-yAq" secondAttribute="top" id="P24-mi-Ry0"/>
+                            <constraint firstItem="F5p-Wg-LQB" firstAttribute="top" secondItem="JxB-kI-RSs" secondAttribute="bottom" constant="32" id="eve-05-duI"/>
                             <constraint firstItem="JxB-kI-RSs" firstAttribute="leading" secondItem="lqM-em-jVg" secondAttribute="leading" id="gMi-lp-kkb"/>
-                            <constraint firstItem="8W5-r6-Okq" firstAttribute="top" secondItem="JxB-kI-RSs" secondAttribute="bottom" constant="32" id="wLo-S0-QXS"/>
+                            <constraint firstItem="8W5-r6-Okq" firstAttribute="top" secondItem="F5p-Wg-LQB" secondAttribute="bottom" constant="32" id="lM9-kn-DQm"/>
                             <constraint firstItem="rVe-6e-yAq" firstAttribute="trailing" secondItem="8W5-r6-Okq" secondAttribute="trailing" constant="32" id="xVt-DT-NwN"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="profileTableView" destination="8W5-r6-Okq" id="5en-XD-jER"/>
+                        <outlet property="userImageView" destination="F5p-Wg-LQB" id="Eet-Y0-opn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cg0-Sj-SPV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -309,6 +331,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="dProfilePic" width="500" height="500"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

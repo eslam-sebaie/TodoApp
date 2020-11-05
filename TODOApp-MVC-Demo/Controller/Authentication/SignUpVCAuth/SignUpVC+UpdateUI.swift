@@ -22,7 +22,7 @@ extension SignUpVC {
     // MARK:- passLabel Validation Method
     func passwordValidationLabel(isHidden: Bool, height: Int) {
         passwordValidation.isHidden = isHidden
-        determineHeight(passwordValidation, identifier: "passHeight", heightNumber: height)
+        determineHeight(passwordValidation, identifier: HeightKeys.signUpHeight, heightNumber: height)
     }
     
     // MARK:- Validation Method

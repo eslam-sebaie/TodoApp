@@ -20,6 +20,7 @@ class TodoListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
          updateUI()
+        
     }
     // MARK:- WillAppear Method
     override func viewWillAppear(_ animated: Bool) {

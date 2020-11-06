@@ -57,7 +57,7 @@ class ProfileVC: UIViewController {
             self.profileDictionary["Age"] = "\(self.profileOfData.age)"
             self.profileTableView.reloadData()
             
-            let firstCharcters = self.profileOfData.name.components(separatedBy: " ").reduce("") { ($0 == "" ? "" : "\($0.first!)") + "\($1.first!)" }
+            let firstCharcters = self.getCharacters(name: self.profileOfData.name)
             if UserDefaultsManager.shared().imgLabel == true {}
             else {
                 self.imageLabel.isHidden = false

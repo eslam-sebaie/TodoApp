@@ -27,7 +27,10 @@ extension ProfileVC {
     @objc func openGallery(tabGesture: UITapGestureRecognizer) {
         self.setypImagePicker()
     }
-    
+    func getCharacters(name: String) -> String{
+       let chars = name.components(separatedBy: " ").reduce("") { ($0 == "" ? "" : "\($0.first!)") + "\($1.first!)" }
+        return chars
+    }
     func showProfileImage(){
         
         APIManager.getPhoto(id: userID!) { (err, img) in

@@ -13,8 +13,8 @@ class ProfileVC: UIViewController {
     // MARK:- Outlets
     @IBOutlet weak var profileTableView: UITableView!
     @IBOutlet weak var userImageView: UIImageView!
-    
     @IBOutlet weak var activityView: UIView!
+    @IBOutlet weak var imageLabel: UILabel!
     
     
     // MARK:- Variables
@@ -56,7 +56,13 @@ class ProfileVC: UIViewController {
             self.profileDictionary["Email"] = self.profileOfData.email
             self.profileDictionary["Age"] = "\(self.profileOfData.age)"
             self.profileTableView.reloadData()
-            self.activityView.isHidden = true
+            
+            let firstCharcters = self.profileOfData.name.components(separatedBy: " ").reduce("") { ($0 == "" ? "" : "\($0.first!)") + "\($1.first!)" }
+            if UserDefaultsManager.shared().imgLabel == true {}
+            else {
+                self.imageLabel.isHidden = false
+                self.imageLabel.text = firstCharcters
+            }
             self.showProfileImage()
         }        
     }

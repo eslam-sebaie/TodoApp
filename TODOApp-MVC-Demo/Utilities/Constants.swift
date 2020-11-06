@@ -53,6 +53,7 @@ struct ParameterKeys {
 // UserDefaultsKeys
 struct UserDefaultsKeys {
     static let token = "UDKToken"
+    static let image = "UDKImage"
 }
 struct HeightKeys {
     static let listHeight = "todoHeight"

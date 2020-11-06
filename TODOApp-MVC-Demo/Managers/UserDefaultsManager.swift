@@ -30,4 +30,16 @@ class UserDefaultsManager {
             return UserDefaults.standard.string(forKey: UserDefaultsKeys.token)!
         }
     }
+    
+    var imgLabel: Bool? {
+        set {
+            UserDefaults.standard.set(newValue, forKey: UserDefaultsKeys.image)
+        }
+        get {
+            guard UserDefaults.standard.object(forKey: UserDefaultsKeys.image) != nil else {
+                return nil
+            }
+            return UserDefaults.standard.bool(forKey: UserDefaultsKeys.image)
+        }
+    }
 }

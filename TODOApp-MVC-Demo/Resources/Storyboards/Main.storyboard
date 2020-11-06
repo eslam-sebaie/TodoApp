@@ -272,6 +272,13 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="F5p-Wg-LQB">
+                                <rect key="frame" x="147" y="120" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="IJY-ce-gRl"/>
+                                    <constraint firstAttribute="height" constant="120" id="yZD-MI-LXS"/>
+                                </constraints>
+                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8W5-r6-Okq">
                                 <rect key="frame" x="32" y="272" width="350" height="220"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -334,13 +341,15 @@
                                     <outlet property="delegate" destination="YTY-1E-qzy" id="jGo-3d-gvI"/>
                                 </connections>
                             </tableView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dProfilePic" translatesAutoresizingMaskIntoConstraints="NO" id="F5p-Wg-LQB">
-                                <rect key="frame" x="147" y="120" width="120" height="120"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7s2-Dm-2Bt">
+                                <rect key="frame" x="207" y="160.5" width="0.0" height="39"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="IJY-ce-gRl"/>
-                                    <constraint firstAttribute="height" constant="120" id="yZD-MI-LXS"/>
+                                    <constraint firstAttribute="height" constant="39" id="zIp-Bj-mf0"/>
                                 </constraints>
-                            </imageView>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view alpha="0.80000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bjL-8z-FaT" userLabel="activityView">
                                 <rect key="frame" x="172" y="413" width="70" height="70"/>
                                 <subviews>
@@ -369,14 +378,17 @@
                             <constraint firstItem="rVe-6e-yAq" firstAttribute="trailing" secondItem="JxB-kI-RSs" secondAttribute="trailing" id="Jtq-Re-yVG"/>
                             <constraint firstItem="JxB-kI-RSs" firstAttribute="top" secondItem="rVe-6e-yAq" secondAttribute="top" id="P24-mi-Ry0"/>
                             <constraint firstItem="bjL-8z-FaT" firstAttribute="centerX" secondItem="lqM-em-jVg" secondAttribute="centerX" id="Q9W-aF-fpA"/>
+                            <constraint firstItem="7s2-Dm-2Bt" firstAttribute="centerY" secondItem="F5p-Wg-LQB" secondAttribute="centerY" id="Yd9-4K-hTu"/>
                             <constraint firstItem="F5p-Wg-LQB" firstAttribute="top" secondItem="JxB-kI-RSs" secondAttribute="bottom" constant="32" id="eve-05-duI"/>
                             <constraint firstItem="JxB-kI-RSs" firstAttribute="leading" secondItem="lqM-em-jVg" secondAttribute="leading" id="gMi-lp-kkb"/>
+                            <constraint firstItem="7s2-Dm-2Bt" firstAttribute="centerX" secondItem="F5p-Wg-LQB" secondAttribute="centerX" id="gsY-hQ-zLu"/>
                             <constraint firstItem="8W5-r6-Okq" firstAttribute="top" secondItem="F5p-Wg-LQB" secondAttribute="bottom" constant="32" id="lM9-kn-DQm"/>
                             <constraint firstItem="rVe-6e-yAq" firstAttribute="trailing" secondItem="8W5-r6-Okq" secondAttribute="trailing" constant="32" id="xVt-DT-NwN"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="activityView" destination="bjL-8z-FaT" id="dHS-hE-mnc"/>
+                        <outlet property="imageLabel" destination="7s2-Dm-2Bt" id="mVz-SP-qNd"/>
                         <outlet property="profileTableView" destination="8W5-r6-Okq" id="5en-XD-jER"/>
                         <outlet property="userImageView" destination="F5p-Wg-LQB" id="Eet-Y0-opn"/>
                     </connections>
@@ -387,7 +399,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="dProfilePic" width="500" height="500"/>
         <image name="trash" width="128" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -13,12 +13,16 @@ extension ProfileVC {
         imagePicker.delegate = self
         userImageView.setupViews(radius: 60)
         userImageView.dropShadow()
+        userImageView.layer.borderWidth = 1
+        userImageView.layer.borderColor = #colorLiteral(red: 0.9051990799, green: 0.9051990799, blue: 0.9051990799, alpha: 1)
         userImageView.clipsToBounds = true
+        userImageView.layer.cornerRadius = self.userImageView.frame.size.width / 2
         let tabGesture = UITapGestureRecognizer()
         tabGesture.addTarget(self, action: #selector(ProfileVC.openGallery(tabGesture:)))
         userImageView.isUserInteractionEnabled = true
         userImageView.addGestureRecognizer(tabGesture)
         activityView.setupViews(radius: 16)
+        imageLabel.isHidden = true
     }
     @objc func openGallery(tabGesture: UITapGestureRecognizer) {
         self.setypImagePicker()
@@ -31,7 +35,9 @@ extension ProfileVC {
                 print(err)
             }
             else {
+                
                 self.userImageView.image = img
+                self.activityView.isHidden = true
                 }
             }
         }
@@ -41,6 +47,7 @@ extension ProfileVC {
 
         alertController.addTextField { (textField : UITextField!) -> Void in
             textField.placeholder = "Enter New Age"
+            textField.keyboardType = .numberPad
         }
         let saveAction = UIAlertAction(title: "Save", style: .default, handler: { alert -> Void in
             self.activityView.isHidden = false
@@ -68,7 +75,9 @@ extension ProfileVC: UIImagePickerControllerDelegate, UINavigationControllerDele
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
         userImageView.image = image
+        imageLabel.isHidden = true
         APIManager.uploadPhoto(avatar: userImageView.image!) {
+            UserDefaultsManager.shared().imgLabel = true
             print("postSuccess")
         }
         picker.dismiss(animated: false, completion: nil)

@@ -143,7 +143,7 @@ class APIManager {
                 print("didn't get any data from API")
                 return
             }
-            let uiImage: UIImage = UIImage(data: data) ?? UIImage(named: "dProfilePic")!
+            let uiImage: UIImage = UIImage(data: data) ?? UIImage(named: "white")!
             completion(nil, uiImage)
         }
     }

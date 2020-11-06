@@ -14,6 +14,9 @@ class ProfileVC: UIViewController {
     @IBOutlet weak var profileTableView: UITableView!
     @IBOutlet weak var userImageView: UIImageView!
     
+    @IBOutlet weak var activityView: UIView!
+    
+    
     // MARK:- Variables
     var profileOfData: UserData!
     var profileDictionary = [String:String]()
@@ -38,7 +41,7 @@ class ProfileVC: UIViewController {
     
     // MARK:- Logout Methods
     @IBAction func logoutPressed(_ sender: Any) {
-        APIManager.postLogout {
+        APIManager.logout {
             UserDefaultsManager.shared().token = nil
             self.present(SignInVC.create(), animated: true, completion: nil)
         }
@@ -53,6 +56,7 @@ class ProfileVC: UIViewController {
             self.profileDictionary["Email"] = self.profileOfData.email
             self.profileDictionary["Age"] = "\(self.profileOfData.age)"
             self.profileTableView.reloadData()
+            self.activityView.isHidden = true
             self.showProfileImage()
         }        
     }

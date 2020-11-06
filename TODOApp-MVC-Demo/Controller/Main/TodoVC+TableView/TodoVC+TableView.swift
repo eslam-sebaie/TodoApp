@@ -18,22 +18,17 @@ extension TodoListVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = todoTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TodoVCTableViewCell
+        cell.delegate = self
         cell.todaLabel.text = todoTasks[indexPath.row].description
         cell.todoImage.image = UIImage(named: "todolist")
+        
+        cell.todoDesign.addTarget(self, action: #selector(trashPressed(sender:)), for: .touchUpInside)
         return cell
+    }
+    @objc func trashPressed(sender: UIButton){
+        showingDeleteAlert()
     }
 }
 
-extension TodoListVC: UITableViewDelegate {
-    // MARK:- TableView Delete Methods
-     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            ListAPIManager.delTask(id: todoTasks[indexPath.row].id) {
-                self.getList()
-            }
-        }
-    }
-    
-}
 
 

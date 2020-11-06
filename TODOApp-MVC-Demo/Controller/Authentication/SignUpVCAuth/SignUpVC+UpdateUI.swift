@@ -18,6 +18,8 @@ extension SignUpVC {
         blurView.setupViews(radius: 16)
         signUpDesign.setupViews(radius: 8)
         passwordValidationLabel(isHidden: true, height: 0)
+        activityView.setupViews(radius: 16)
+        activityView.isHidden = true
     }
     // MARK:- passLabel Validation Method
     func passwordValidationLabel(isHidden: Bool, height: Int) {
@@ -25,41 +27,45 @@ extension SignUpVC {
         determineHeight(passwordValidation, identifier: HeightKeys.signUpHeight, heightNumber: height)
     }
     
+    func signUpData(){
+        activityView.isHidden = false
+        APIManager.signUp(name: nameTextField.text!, email: emailTextField.text!, password: passwordTextField.text!, age: Int(ageTextField.text!)!) {
+            self.activityView.isHidden = true
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
     // MARK:- Validation Method
-    func valid() -> Bool{
-        if let name = nameTextField.text , !name.isEmpty {
-            if let email = emailTextField.text , !email.isEmpty {
-                if isValidEmail(emailTextField.text!) {
-                    if let pass = passwordTextField.text , !pass.isEmpty {
-                        if isPasswordValid(passwordTextField.text!) {
-                            if let age = ageTextField.text, !age.isEmpty {
-                                passwordValidationLabel(isHidden: true, height: 0)
-                               return true
-                            }
-                            else {
-                                passwordValidationLabel(isHidden: true, height: 0)
-                                show_Alert("Enter Your Age.")
-                            }
-                        }
-                        else {
-                            passwordValidationLabel(isHidden: false, height: 12)
-                        }
-                    }
-                    else {
-                        show_Alert("Enter Your Password.")
-                    }
-                }
-                else {
-                    show_Alert("Enter Your Correct Email Address.")
-                }
-            }
-            else {
-                show_Alert("Enter Your Email Address.")
-            }
-        }
-        else {
+    func valid() -> Bool {
+        
+        guard let name = nameTextField.text , !name.isEmpty else {
             show_Alert("Enter Your Name.")
+            return false
         }
-        return false
+        
+        guard let email = emailTextField.text , !email.isEmpty else {
+            show_Alert("Enter Your Email Address.")
+            return false
+        }
+        guard isValidEmail(email) else {
+            show_Alert("Enter Your Correct Email.")
+            return false
+        }
+        guard let pass = passwordTextField.text, !pass.isEmpty else {
+            show_Alert("Enter Your Password.")
+            return false
+        }
+        guard isPasswordValid(pass) else {
+            passwordValidationLabel(isHidden: false, height: 12)
+            show_Alert("Enter Your Correct Password.")
+            return false
+        }
+        guard let age = ageTextField.text, !age.isEmpty else {
+            passwordValidationLabel(isHidden: true, height: 0)
+            show_Alert("Enter Your Age.")
+            return false
+        }
+        passwordValidationLabel(isHidden: true, height: 0)
+        return true
     }
 }

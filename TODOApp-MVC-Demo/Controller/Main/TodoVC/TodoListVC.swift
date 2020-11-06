@@ -14,8 +14,10 @@ class TodoListVC: UIViewController {
     @IBOutlet weak var testView: UIView!
     @IBOutlet weak var todoTableView: UITableView!
     @IBOutlet weak var todoTextField: UITextField!
+    @IBOutlet weak var activityView: UIView!
     
     var todoTasks = [AllTasks]()
+    var index = 0
     // MARK:- Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,11 +41,12 @@ class TodoListVC: UIViewController {
     
     // MARK:- Write ToDo Text Method
     @IBAction func sendPressed(_ sender: Any) {
+        activityView.isHidden = false
         guard let msg = todoTextField.text , !msg.isEmpty else {
             show_Alert("Enter Your Task.")
             return
         }
-        ListAPIManager.postTask(description: todoTextField.text!) { [self] in
+        ListAPIManager.addTask(description: todoTextField.text!) { [self] in
             self.getList()
             self.todoTextField.text = ""
         }
@@ -57,5 +60,14 @@ class TodoListVC: UIViewController {
     }
 }
 
+extension TodoListVC: showTrashDelegate {
+    func btnTrashTapped(cell: TodoVCTableViewCell) {
+        let indexPath = self.todoTableView.indexPath(for: cell)
+        index = indexPath!.row
+        
+    }
+    
+    
+}
 
 

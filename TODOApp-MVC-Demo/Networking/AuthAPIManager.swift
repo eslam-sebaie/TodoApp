@@ -6,12 +6,11 @@
 //  Copyright © 2020 IDEAEG. All rights reserved.
 //
 
-import Foundation
 import Alamofire
 import UIKit
 import SwiftyJSON
 class APIManager {
-    class func login(with email: String, password: String, completion: @escaping (_ error: Error?, _ loginData: LoginResponse?) -> Void) {
+    class func logIn(with email: String, password: String, completion: @escaping (_ error: Error?, _ loginData: LoginResponse?) -> Void) {
         
         let headers: HTTPHeaders = [HeaderKeys.contentType: "application/json"]
         let params: [String: Any] = [ParameterKeys.email: email,
@@ -40,7 +39,7 @@ class APIManager {
         }
     }
     
-    class func SignUp(name: String ,email: String, password: String, age: Int, completion: @escaping () -> Void) {
+    class func signUp(name: String ,email: String, password: String, age: Int, completion: @escaping () -> Void) {
         
         let headers: HTTPHeaders = [HeaderKeys.contentType: "application/json"]
         let params: [String: Any] = [ParameterKeys.name: name,ParameterKeys.email: email,
@@ -89,7 +88,7 @@ class APIManager {
         }
     }
     
-    class func postLogout(completion: @escaping () -> Void) {
+    class func logout(completion: @escaping () -> Void) {
         let headers: HTTPHeaders = [HeaderKeys.Authorization: "Bearer \(UserDefaultsManager.shared().token ?? "")"]
         
         AF.request(URLs.logout, method: HTTPMethod.post, parameters: nil, encoding: JSONEncoding.default, headers: headers).response {
@@ -109,7 +108,7 @@ class APIManager {
         }
     }
     
-    class func createPhoto(avatar: UIImage, completion: @escaping () -> Void){
+    class func uploadPhoto(avatar: UIImage, completion: @escaping () -> Void){
         let headers: HTTPHeaders = [HeaderKeys.Authorization: "Bearer \(UserDefaultsManager.shared().token ?? "")"]
         AF.upload(multipartFormData: { (form: MultipartFormData) in
             

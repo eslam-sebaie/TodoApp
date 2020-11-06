@@ -24,6 +24,9 @@ class SignUpVC: UIViewController {
     
     @IBOutlet weak var passwordValidation: UILabel!
     
+    @IBOutlet weak var activityView: UIView!
+    
+    
     // MARK:- Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,10 +35,8 @@ class SignUpVC: UIViewController {
     
     // MARK:- SignUp Method
     @IBAction func signUpPressed(_ sender: Any) {
-        if valid(){
-            APIManager.SignUp(name: nameTextField.text!, email: emailTextField.text!, password: passwordTextField.text!, age: Int(ageTextField.text!)!) {
-                self.dismiss(animated: true, completion: nil)
-            }
+        if valid() {
+            signUpData()
         }
     }
     

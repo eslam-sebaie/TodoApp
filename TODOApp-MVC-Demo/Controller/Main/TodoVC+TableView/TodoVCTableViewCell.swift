@@ -7,11 +7,16 @@
 //
 
 import UIKit
-
+protocol showTrashDelegate: AnyObject {
+    func btnTrashTapped(cell: TodoVCTableViewCell)
+}
 class TodoVCTableViewCell: UITableViewCell {
 
     @IBOutlet weak var todoImage: UIImageView!
     @IBOutlet weak var todaLabel: UILabel!
+    @IBOutlet weak var todoDesign: UIButton!
+    
+    var delegate: showTrashDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,5 +27,10 @@ class TodoVCTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    @IBAction func todoPressed(_ sender: Any) {
+        delegate?.btnTrashTapped(cell: self)
+    }
+    
 
 }

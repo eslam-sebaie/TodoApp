@@ -11,7 +11,7 @@ import Alamofire
 
 class ListAPIManager {
     
-   class func postTask(description: String, completion: @escaping() -> Void) {
+   class func addTask(description: String, completion: @escaping() -> Void) {
         let hedders: HTTPHeaders = [HeaderKeys.contentType: "application/json", HeaderKeys.Authorization: "Bearer \(UserDefaultsManager.shared().token ?? "")"]
         let params = [ParameterKeys.description: description]
         
@@ -56,9 +56,8 @@ class ListAPIManager {
         }
     }
     
-    class func delTask(id: String, completion: @escaping() -> Void) {
+    class func deleteTask(id: String, completion: @escaping() -> Void) {
      let hedders: HTTPHeaders = [HeaderKeys.contentType: "application/json", HeaderKeys.Authorization: "Bearer \(UserDefaultsManager.shared().token ?? "")"]
-
 
         AF.request(URLs.addTask + "/\(id)", method: .delete, parameters: nil, encoding: JSONEncoding.default, headers: hedders).response {
              response in
@@ -66,7 +65,6 @@ class ListAPIManager {
              guard response.error == nil else {
                  print(response.error!)
                  completion()
-
                  return
              }
              guard response.data != nil else {

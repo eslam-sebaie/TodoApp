@@ -18,7 +18,7 @@ extension ProfileVC {
         tabGesture.addTarget(self, action: #selector(ProfileVC.openGallery(tabGesture:)))
         userImageView.isUserInteractionEnabled = true
         userImageView.addGestureRecognizer(tabGesture)
-        
+        activityView.setupViews(radius: 16)
     }
     @objc func openGallery(tabGesture: UITapGestureRecognizer) {
         self.setypImagePicker()
@@ -43,9 +43,11 @@ extension ProfileVC {
             textField.placeholder = "Enter New Age"
         }
         let saveAction = UIAlertAction(title: "Save", style: .default, handler: { alert -> Void in
+            self.activityView.isHidden = false
             let ageTF = alertController.textFields![0] as UITextField
             APIManager.editProfile(age: Int(ageTF.text!)!) { (err, success) in
                 self.getProfileData()
+                self.activityView.isHidden = true
             }
         })
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil )
@@ -66,7 +68,7 @@ extension ProfileVC: UIImagePickerControllerDelegate, UINavigationControllerDele
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
         userImageView.image = image
-        APIManager.createPhoto(avatar: userImageView.image!) {
+        APIManager.uploadPhoto(avatar: userImageView.image!) {
             print("postSuccess")
         }
         picker.dismiss(animated: false, completion: nil)

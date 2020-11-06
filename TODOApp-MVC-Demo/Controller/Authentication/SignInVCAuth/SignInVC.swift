@@ -16,6 +16,7 @@ class SignInVC: UIViewController {
     @IBOutlet weak var signInDesign: UIButton!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var activityView: UIView!
     
     // MARK:- Lifecycle methods
     override func viewDidLoad() {
@@ -26,15 +27,7 @@ class SignInVC: UIViewController {
     // MARK:- SignIn Button
     @IBAction func signInPressed(_ sender: Any) {
         if valid() {
-            APIManager.login(with: emailTextField.text!, password: passwordTextField.text!) { (error, loginData) in
-                if let error = error {
-                    self.show_Alert("Wonge Email Or Password.")
-                    print(error.localizedDescription)
-                } else if let loginData = loginData {
-                    UserDefaultsManager.shared().token = loginData.token
-                }
-                self.present(TodoListVC.create(), animated: true, completion: nil)
-            }
+            loginData()
         }
     }
     

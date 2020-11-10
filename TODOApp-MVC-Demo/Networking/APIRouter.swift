@@ -15,6 +15,7 @@ enum APIRouter: URLRequestConvertible{
     case login(_ email: String, _ password: String)
     case signUp(_ name: String , _ email: String, _ password: String, _ age: Int)
     case getTodos
+    case logout
     // MARK: - HttpMethod
     private var method: HTTPMethod {
         switch self{
@@ -46,6 +47,9 @@ enum APIRouter: URLRequestConvertible{
             return URLs.register
         case .getTodos:
             return URLs.addTask
+        case .logout:
+            return URLs.logout
+            
         }
     }
     // MARK: - URLRequestConvertible
@@ -55,7 +59,7 @@ enum APIRouter: URLRequestConvertible{
         //httpMethod
         urlRequest.httpMethod = method.rawValue
         switch self {
-        case .getTodos:
+        case .getTodos, .logout:
             urlRequest.setValue("Bearer \(UserDefaultsManager.shared().token ?? "")",
             forHTTPHeaderField: HeaderKeys.Authorization)
         case .signUp:

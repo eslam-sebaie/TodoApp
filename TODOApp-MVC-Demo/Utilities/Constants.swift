@@ -30,7 +30,7 @@ struct URLs {
     static let register = "user/register"
     static let addTask = base + "task"
     static let profile = base + "user/me"
-    static let logout = base + "user/logout"
+    static let logout = "user/logout"
     static let postImage = base + "user/me/avatar"
     
 }

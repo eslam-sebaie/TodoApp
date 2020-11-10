@@ -76,6 +76,13 @@ class APIManager {
 //        }
 //    }
 //
+    
+    class func logout(completion: @escaping (Result<(Bool), Error>)-> ()){
+        request(APIRouter.logout){ (response) in
+             completion(response)
+         }
+     }
+    
     class func getProfile(completion: @escaping (_ error: Error?, _ loginData: UserData?) -> Void) {
         
         let headers: HTTPHeaders = [HeaderKeys.Authorization: "Bearer \(UserDefaultsManager.shared().token ?? "")"]

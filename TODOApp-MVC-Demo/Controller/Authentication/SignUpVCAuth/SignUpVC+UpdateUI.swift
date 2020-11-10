@@ -29,7 +29,7 @@ extension SignUpVC {
     
     func signUpData(){
         activityView.isHidden = false
-        APIManager.signUp(name: nameTextField.text!, email: emailTextField.text!, password: passwordTextField.text!, age: Int(ageTextField.text!)!) {
+        APIManager.signUp(name: nameTextField.text!, email: emailTextField.text!, password: passwordTextField.text!, age: Int(ageTextField.text!)!){ (response) in
             self.activityView.isHidden = true
             self.dismiss(animated: true, completion: nil)
         }

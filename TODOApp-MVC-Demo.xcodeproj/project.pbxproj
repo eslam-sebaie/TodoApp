@@ -22,6 +22,7 @@
 		96B3CC89254DB0A000EE0471 /* ProfileVC+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B3CC88254DB0A000EE0471 /* ProfileVC+TableView.swift */; };
 		96C433DB25542321006E62BB /* UIViewController+ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C433DA25542321006E62BB /* UIViewController+ImageView.swift */; };
 		96C433DE2554238B006E62BB /* ProfileVC+UpdateUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C433DD2554238B006E62BB /* ProfileVC+UpdateUI.swift */; };
+		96D8B5F9255B0700002117E9 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D8B5F8255B0700002117E9 /* APIRouter.swift */; };
 		B76E56912548A24A00C13D43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76E56902548A24A00C13D43 /* AppDelegate.swift */; };
 		B76E56952548A24A00C13D43 /* TodoListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76E56942548A24A00C13D43 /* TodoListVC.swift */; };
 		B76E56982548A24A00C13D43 /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B76E56962548A24A00C13D43 /* Authentication.storyboard */; };
@@ -55,6 +56,7 @@
 		96B3CC88254DB0A000EE0471 /* ProfileVC+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileVC+TableView.swift"; sourceTree = "<group>"; };
 		96C433DA25542321006E62BB /* UIViewController+ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ImageView.swift"; sourceTree = "<group>"; };
 		96C433DD2554238B006E62BB /* ProfileVC+UpdateUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileVC+UpdateUI.swift"; sourceTree = "<group>"; };
+		96D8B5F8255B0700002117E9 /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
 		B76E568D2548A24A00C13D43 /* TODOApp-MVC-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TODOApp-MVC-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B76E56902548A24A00C13D43 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B76E56942548A24A00C13D43 /* TodoListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListVC.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 			children = (
 				B76E56BE2548AFA000C13D43 /* AuthAPIManager.swift */,
 				962D3BEF254C8911003E5EB5 /* ListAPIManager.swift */,
+				96D8B5F8255B0700002117E9 /* APIRouter.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				96B3CC83254DA1E200EE0471 /* ProfileVC.swift in Sources */,
+				96D8B5F9255B0700002117E9 /* APIRouter.swift in Sources */,
 				96C433DB25542321006E62BB /* UIViewController+ImageView.swift in Sources */,
 				962D3BF0254C8911003E5EB5 /* ListAPIManager.swift in Sources */,
 				962D3BEC254C8840003E5EB5 /* TodoVC+TableView.swift in Sources */,

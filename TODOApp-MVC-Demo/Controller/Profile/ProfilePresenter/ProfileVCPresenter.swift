@@ -9,7 +9,6 @@
 import UIKit
 protocol ProfileData {
     func sendProfileData(firstChars: String? ,userID: String?, _ profileDic:Dictionary<String, String>?)
-    func sucessImage(error: Error?, img: UIImage?)
     func successUpload(success: Bool)
     
 }
@@ -41,17 +40,6 @@ class ProfilePresenter {
         }
     }
     
-    func showProfileImage(_ userID: String){
-        APIManager.getPhoto(id: userID) { (err, img) in
-            if let err = err {
-                self.delegate?.sucessImage(error: err, img: nil)
-                print(err)
-            }
-            else {
-                self.delegate?.sucessImage(error: nil, img: img)
-                }
-            }
-        }
     func uploadProfileImage(_ avatar: UIImage){
         APIManager.uploadPhoto(avatar: avatar) {
             UserDefaultsManager.shared().imgLabel = true

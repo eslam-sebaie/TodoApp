@@ -32,6 +32,7 @@ struct URLs {
     static let profile = "user/me"
     static let logout = "user/logout"
     static let postImage = base + "user/me/avatar"
+    static let postPhoto = "user/me/avatar"
     
 }
 

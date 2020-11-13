@@ -44,46 +44,19 @@ class APIManager {
     
     
     class func uploadPhoto(avatar: UIImage, completion: @escaping () -> Void){
-            let headers: HTTPHeaders = [HeaderKeys.Authorization: "Bearer \(UserDefaultsManager.shared().token ?? "")"]
-            AF.upload(multipartFormData: { (form: MultipartFormData) in
-                
-                if let data = avatar.jpegData(compressionQuality: 0.75) {
-                    form.append(data, withName: "avatar", fileName: "avatar.jpeg", mimeType: "image/jpeg")
-                }
-            }, to: URLs.postImage, usingThreshold: MultipartFormData.encodingMemoryThreshold, method: .post, headers: headers).response {
-                response in
-                guard response.error == nil else {
-                    print(response.error!)
-                    completion()
-                    return
-                }
-                guard response.data != nil else {
-                    print("didn't get any data from API")
-                    return
-                }
-                completion()
-            }
-        }
+        let data = avatar.jpegData(compressionQuality: 0.75)
+        let route = APIRouter.uploadPhoto(data!)
         
-        class func getPhoto(id: String, completion: @escaping (_ error: Error?,_ avatar: UIImage) -> Void){
-          
-            
-            AF.request(URLs.base + "user/\(id)/avatar", method: HTTPMethod.get, parameters: nil, encoding: JSONEncoding.default, headers: nil).response {
-                response in
-
-                guard response.error == nil else {
-                    print("errror")
-                    completion(response.error, UIImage())
-                    return
-                }
-                guard let data = response.data else {
-                    print("didn't get any data from API")
-                    return
-                }
-                let uiImage: UIImage = UIImage(data: data) ?? UIImage(named: "white")!
-                completion(nil, uiImage)
-            }
+        AF.upload(multipartFormData: route.httpBody, with: route)
+        .uploadProgress(closure: { (progress) in
+           print("\(progress)")
+        }).validate().responseData { (response) in
+            print(response)
+            completion()
         }
+    }
+        
+       
     class func editProfile(age: Int,completion: @escaping () -> Void) {
         request1(APIRouter.editProfile(age)) { (_ , _ ) in
             completion()

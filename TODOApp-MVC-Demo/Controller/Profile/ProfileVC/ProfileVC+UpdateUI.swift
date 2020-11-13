@@ -6,8 +6,9 @@
 //  Copyright © 2020 IDEAEG. All rights reserved.
 //
 
-import Foundation
+
 import UIKit
+import Kingfisher
 extension ProfileVC {
     func updateUI(){
         presenter = ProfilePresenter(view: self)
@@ -29,9 +30,9 @@ extension ProfileVC {
         self.setypImagePicker()
     }
     
-    func showProfileImage(){
-        presenter.showProfileImage(userID!)
-    }
+//    func showProfileImage(){
+//        presenter.showProfileImage(userID!)
+//    }
     
     func editProfile(){
         let alertController = UIAlertController(title: "Edit Your Age", message: "", preferredStyle: .alert)
@@ -53,6 +54,29 @@ extension ProfileVC {
         alertController.addAction(saveAction)
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    
+    func downloadImage(with urlString : String , imageCompletionHandler: @escaping (UIImage?) -> Void){
+            guard let url = URL.init(string: urlString) else {
+                return  imageCompletionHandler(nil)
+            }
+            let resource = ImageResource(downloadURL: url)
+            
+            KingfisherManager.shared.retrieveImage(with: resource, options: nil, progressBlock: nil) { result in
+                switch result {
+                case .success(let value):
+                    imageCompletionHandler(value.image)
+                case .failure:
+                    imageCompletionHandler(nil)
+                }
+            }
+        }
+    
+    func setLabel(){
+        self.activityView.isHidden = true
+        self.imageLabel.isHidden = false
+        self.imageLabel.text = Chars
     }
         
 }

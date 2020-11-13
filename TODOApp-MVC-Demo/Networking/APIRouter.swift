@@ -18,15 +18,14 @@ enum APIRouter: URLRequestConvertible{
     case logout
     case getProfile
     case editProfile(_ age: Int)
-    case getPhoto(_ id: String)
-//    case uploadPhoto(_ data:Data)
+    case uploadPhoto(_ data:Data)
 //
     case addTask(_ description:String)
     case deleteTask(_ id: String)
     // MARK: - HttpMethod
     private var method: HTTPMethod {
         switch self{
-        case .getTodos, .getProfile, .getPhoto:
+        case .getTodos, .getProfile:
             return .get
         case .editProfile:
             return .put
@@ -47,13 +46,13 @@ enum APIRouter: URLRequestConvertible{
                                          ParameterKeys.password: password, ParameterKeys.age: age]
         case .editProfile(let age):
             return [ParameterKeys.age: age]
-        case .getPhoto(let id):
-            return ["_id": id]
+     
+            
         case .addTask(let description):
             return [ParameterKeys.description: description]
             
         case .deleteTask(let id):
-            return ["_id": id]
+            return ["id": id]
         default:
             return nil
         }
@@ -73,12 +72,8 @@ enum APIRouter: URLRequestConvertible{
         case .getProfile, .editProfile:
             return URLs.profile
         
-            
-        case .getPhoto(let id):
-            return "user/\(id)/avatar"
-//
-//        case .uploadPhoto:
-//            return URLs.postImage
+        case .uploadPhoto:
+            return URLs.postPhoto
             
         case .addTask:
             return URLs.addTask
@@ -96,42 +91,20 @@ enum APIRouter: URLRequestConvertible{
         //httpMethod
         urlRequest.httpMethod = method.rawValue
         switch self {
-        case  .logout, .getProfile:
+        case  .logout, .getProfile, .uploadPhoto:
             urlRequest.setValue("Bearer \(UserDefaultsManager.shared().token ?? "")",
             forHTTPHeaderField: HeaderKeys.Authorization)
         case .signUp, .editProfile, .addTask, .getTodos, .deleteTask:
             urlRequest.setValue("Bearer \(UserDefaultsManager.shared().token ?? "")",
             forHTTPHeaderField: HeaderKeys.Authorization)
             urlRequest.setValue("application/json", forHTTPHeaderField: HeaderKeys.contentType)
+        
         default:
             
             break
         }
         urlRequest.setValue("application/json", forHTTPHeaderField: HeaderKeys.contentType)
         
-        // HTTP Body
-        let httpBody: Data? = {
-            switch self {
-            
-                
-            default:
-                return nil
-            }
-        }()
-        
-//        var multipartFormData: MultipartFormData {
-//                let multipartFormData = MultipartFormData()
-//                switch self {
-//                case .uploadPhoto(let data):
-//                    AF.upload(multipartFormData: { (form: MultipartFormData) in
-//                        multipartFormData.append(data, withName: "avatar", fileName: "avatar.jpeg", mimeType: "image/jpeg")
-//                    }, with: MultipartFormData.encodingMemoryThreshold as! URLRequestConvertible)
-//
-//                default: ()
-//                }
-//
-//                return multipartFormData
-//            }
         
         
         // Encoding
@@ -147,6 +120,16 @@ enum APIRouter: URLRequestConvertible{
         print(try encoding.encode(urlRequest, with: parameters))
         return try encoding.encode(urlRequest, with: parameters)
     }
+    var httpBody: MultipartFormData {
+            let multipartFormData = MultipartFormData()
+            switch self {
+            case .uploadPhoto(let data):
+                multipartFormData.append(data, withName: "avatar", fileName: "avatar.png", mimeType: "image/png")
+            default: ()
+            }
+
+            return multipartFormData
+        }
     
 }
 

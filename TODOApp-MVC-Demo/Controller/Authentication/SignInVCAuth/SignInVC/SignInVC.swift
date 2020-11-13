@@ -18,6 +18,8 @@ class SignInVC: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var activityView: UIView!
     
+    var presenter: SignInPresenter!
+
     // MARK:- Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()

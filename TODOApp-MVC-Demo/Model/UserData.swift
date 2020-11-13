@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit
 struct UserData: Codable {
     
     var id: String
@@ -21,3 +21,15 @@ struct UserData: Codable {
         
     }
 }
+
+struct uploadImage: Codable {
+    var img: Data
+    
+    enum CodingKeys: String, CodingKey {
+        case img
+    }
+}
+
+//struct retLog: Decodable {
+//    var bo: Bool
+//}

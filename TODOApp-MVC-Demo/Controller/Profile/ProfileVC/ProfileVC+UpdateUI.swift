@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 extension ProfileVC {
     func updateUI(){
+        presenter = ProfilePresenter(view: self)
         imagePicker.delegate = self
         userImageView.setupViews(radius: 60)
         userImageView.dropShadow()
@@ -27,23 +28,10 @@ extension ProfileVC {
     @objc func openGallery(tabGesture: UITapGestureRecognizer) {
         self.setypImagePicker()
     }
-    func getCharacters(name: String) -> String{
-       let chars = name.components(separatedBy: " ").reduce("") { ($0 == "" ? "" : "\($0.first!)") + "\($1.first!)" }
-        return chars
-    }
+    
     func showProfileImage(){
-        
-        APIManager.getPhoto(id: userID!) { (err, img) in
-            if let err = err {
-                print(err)
-            }
-            else {
-                
-                self.userImageView.image = img
-                self.activityView.isHidden = true
-                }
-            }
-        }
+        presenter.showProfileImage(userID!)
+    }
     
     func editProfile(){
         let alertController = UIAlertController(title: "Edit Your Age", message: "", preferredStyle: .alert)
@@ -55,10 +43,11 @@ extension ProfileVC {
         let saveAction = UIAlertAction(title: "Save", style: .default, handler: { alert -> Void in
             self.activityView.isHidden = false
             let ageTF = alertController.textFields![0] as UITextField
-            APIManager.editProfile(age: Int(ageTF.text!)!) { (err, success) in
-                self.getProfileData()
-                self.activityView.isHidden = true
+            APIManager.editProfile(age: Int(ageTF.text!)!) {
+                    self.getProfileData()
+                    self.activityView.isHidden = true
             }
+
         })
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil )
         alertController.addAction(saveAction)
@@ -76,13 +65,11 @@ extension ProfileVC: UIImagePickerControllerDelegate, UINavigationControllerDele
         self.present(imagePicker, animated: true, completion: nil)
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
-        userImageView.image = image
-        imageLabel.isHidden = true
-        APIManager.uploadPhoto(avatar: userImageView.image!) {
-            UserDefaultsManager.shared().imgLabel = true
-            print("postSuccess")
+            let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
+            userImageView.image = image
+            imageLabel.isHidden = true
+            activityView.isHidden = false
+            presenter.uploadProfileImage(userImageView.image!)
+            picker.dismiss(animated: false, completion: nil)
         }
-        picker.dismiss(animated: false, completion: nil)
-    }
 }

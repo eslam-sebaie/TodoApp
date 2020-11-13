@@ -17,6 +17,15 @@
 		962D3BF3254C8B07003E5EB5 /* TodoVC+UpdateUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962D3BF2254C8B07003E5EB5 /* TodoVC+UpdateUI.swift */; };
 		962D3BF6254C95DF003E5EB5 /* TaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962D3BF5254C95DF003E5EB5 /* TaskData.swift */; };
 		962D3C06254CA7A8003E5EB5 /* AllTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962D3C05254CA7A8003E5EB5 /* AllTasks.swift */; };
+		9647ACC3255EA7C6003554F5 /* Trash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9647ACC2255EA7C6003554F5 /* Trash.swift */; };
+		9647ACC8255EBB8D003554F5 /* SignInVCPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9647ACC7255EBB8D003554F5 /* SignInVCPresenter.swift */; };
+		9647ACCC255EBF90003554F5 /* SignInVC+ReadLoginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9647ACCB255EBF90003554F5 /* SignInVC+ReadLoginData.swift */; };
+		9647ACD2255EC21D003554F5 /* SignUpVCPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9647ACD1255EC21D003554F5 /* SignUpVCPresenter.swift */; };
+		9647ACD5255EC534003554F5 /* SignUpVC+ReadSignData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9647ACD4255EC534003554F5 /* SignUpVC+ReadSignData.swift */; };
+		9647ACD9255EC660003554F5 /* TodoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9647ACD8255EC660003554F5 /* TodoPresenter.swift */; };
+		9647ACDD255ECA19003554F5 /* TodoVC+ReadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9647ACDC255ECA19003554F5 /* TodoVC+ReadData.swift */; };
+		9647ACE1255ECC79003554F5 /* ProfileVCPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9647ACE0255ECC79003554F5 /* ProfileVCPresenter.swift */; };
+		9647ACE6255EDAF5003554F5 /* profileVC+ReadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9647ACE5255EDAF5003554F5 /* profileVC+ReadData.swift */; };
 		96B3CC83254DA1E200EE0471 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B3CC82254DA1E200EE0471 /* ProfileVC.swift */; };
 		96B3CC86254DAD4200EE0471 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B3CC85254DAD4200EE0471 /* ProfileTableViewCell.swift */; };
 		96B3CC89254DB0A000EE0471 /* ProfileVC+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B3CC88254DB0A000EE0471 /* ProfileVC+TableView.swift */; };
@@ -51,6 +60,15 @@
 		962D3BF2254C8B07003E5EB5 /* TodoVC+UpdateUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoVC+UpdateUI.swift"; sourceTree = "<group>"; };
 		962D3BF5254C95DF003E5EB5 /* TaskData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskData.swift; sourceTree = "<group>"; };
 		962D3C05254CA7A8003E5EB5 /* AllTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTasks.swift; sourceTree = "<group>"; };
+		9647ACC2255EA7C6003554F5 /* Trash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trash.swift; sourceTree = "<group>"; };
+		9647ACC7255EBB8D003554F5 /* SignInVCPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVCPresenter.swift; sourceTree = "<group>"; };
+		9647ACCB255EBF90003554F5 /* SignInVC+ReadLoginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignInVC+ReadLoginData.swift"; sourceTree = "<group>"; };
+		9647ACD1255EC21D003554F5 /* SignUpVCPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVCPresenter.swift; sourceTree = "<group>"; };
+		9647ACD4255EC534003554F5 /* SignUpVC+ReadSignData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignUpVC+ReadSignData.swift"; sourceTree = "<group>"; };
+		9647ACD8255EC660003554F5 /* TodoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoPresenter.swift; sourceTree = "<group>"; };
+		9647ACDC255ECA19003554F5 /* TodoVC+ReadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoVC+ReadData.swift"; sourceTree = "<group>"; };
+		9647ACE0255ECC79003554F5 /* ProfileVCPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVCPresenter.swift; sourceTree = "<group>"; };
+		9647ACE5255EDAF5003554F5 /* profileVC+ReadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "profileVC+ReadData.swift"; sourceTree = "<group>"; };
 		96B3CC82254DA1E200EE0471 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		96B3CC85254DAD4200EE0471 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		96B3CC88254DB0A000EE0471 /* ProfileVC+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileVC+TableView.swift"; sourceTree = "<group>"; };
@@ -108,8 +126,8 @@
 		962D3BD2254C70F5003E5EB5 /* SignInVCAuth */ = {
 			isa = PBXGroup;
 			children = (
-				B76E56B82548A76600C13D43 /* SignInVC.swift */,
-				962D3BD4254C712C003E5EB5 /* SignInVC+UpdateUI.swift */,
+				9647ACC5255EBAE3003554F5 /* SignInVC */,
+				9647ACC6255EBAFA003554F5 /* SignInPresenter */,
 			);
 			path = SignInVCAuth;
 			sourceTree = "<group>";
@@ -117,8 +135,8 @@
 		962D3BDA254C7BFF003E5EB5 /* SignUpVCAuth */ = {
 			isa = PBXGroup;
 			children = (
-				B76E56BB2548A84600C13D43 /* SignUpVC.swift */,
-				962D3BDC254C7C23003E5EB5 /* SignUpVC+UpdateUI.swift */,
+				9647ACCE255EC03D003554F5 /* SignUpVC */,
+				9647ACCF255EC05B003554F5 /* SignUpPresenter */,
 			);
 			path = SignUpVCAuth;
 			sourceTree = "<group>";
@@ -128,6 +146,7 @@
 			children = (
 				B76E56942548A24A00C13D43 /* TodoListVC.swift */,
 				962D3BF2254C8B07003E5EB5 /* TodoVC+UpdateUI.swift */,
+				9647ACDC255ECA19003554F5 /* TodoVC+ReadData.swift */,
 			);
 			path = TodoVC;
 			sourceTree = "<group>";
@@ -149,11 +168,64 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
+		9647ACC5255EBAE3003554F5 /* SignInVC */ = {
+			isa = PBXGroup;
+			children = (
+				B76E56B82548A76600C13D43 /* SignInVC.swift */,
+				9647ACCB255EBF90003554F5 /* SignInVC+ReadLoginData.swift */,
+				962D3BD4254C712C003E5EB5 /* SignInVC+UpdateUI.swift */,
+			);
+			path = SignInVC;
+			sourceTree = "<group>";
+		};
+		9647ACC6255EBAFA003554F5 /* SignInPresenter */ = {
+			isa = PBXGroup;
+			children = (
+				9647ACC7255EBB8D003554F5 /* SignInVCPresenter.swift */,
+			);
+			path = SignInPresenter;
+			sourceTree = "<group>";
+		};
+		9647ACCE255EC03D003554F5 /* SignUpVC */ = {
+			isa = PBXGroup;
+			children = (
+				B76E56BB2548A84600C13D43 /* SignUpVC.swift */,
+				962D3BDC254C7C23003E5EB5 /* SignUpVC+UpdateUI.swift */,
+				9647ACD4255EC534003554F5 /* SignUpVC+ReadSignData.swift */,
+			);
+			path = SignUpVC;
+			sourceTree = "<group>";
+		};
+		9647ACCF255EC05B003554F5 /* SignUpPresenter */ = {
+			isa = PBXGroup;
+			children = (
+				9647ACD1255EC21D003554F5 /* SignUpVCPresenter.swift */,
+			);
+			path = SignUpPresenter;
+			sourceTree = "<group>";
+		};
+		9647ACD7255EC636003554F5 /* TodoVCPresenter */ = {
+			isa = PBXGroup;
+			children = (
+				9647ACD8255EC660003554F5 /* TodoPresenter.swift */,
+			);
+			path = TodoVCPresenter;
+			sourceTree = "<group>";
+		};
+		9647ACDF255ECC65003554F5 /* ProfilePresenter */ = {
+			isa = PBXGroup;
+			children = (
+				9647ACE0255ECC79003554F5 /* ProfileVCPresenter.swift */,
+			);
+			path = ProfilePresenter;
+			sourceTree = "<group>";
+		};
 		96B3CC81254DA0E100EE0471 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
 				96C6840E25509B5C00A32452 /* ProfileVC */,
 				96C6841025509B6B00A32452 /* ProfileVC+TableView */,
+				9647ACDF255ECC65003554F5 /* ProfilePresenter */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -163,6 +235,7 @@
 			children = (
 				96B3CC82254DA1E200EE0471 /* ProfileVC.swift */,
 				96C433DD2554238B006E62BB /* ProfileVC+UpdateUI.swift */,
+				9647ACE5255EDAF5003554F5 /* profileVC+ReadData.swift */,
 			);
 			path = ProfileVC;
 			sourceTree = "<group>";
@@ -280,6 +353,7 @@
 			isa = PBXGroup;
 			children = (
 				B76E56C22548B2B100C13D43 /* Constants.swift */,
+				9647ACC2255EA7C6003554F5 /* Trash.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -316,6 +390,7 @@
 			children = (
 				962D3BE5254C877D003E5EB5 /* TodoVC */,
 				962D3BE7254C878A003E5EB5 /* TodoVC+TableView */,
+				9647ACD7255EC636003554F5 /* TodoVCPresenter */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -436,28 +511,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9647ACDD255ECA19003554F5 /* TodoVC+ReadData.swift in Sources */,
 				96B3CC83254DA1E200EE0471 /* ProfileVC.swift in Sources */,
 				96D8B5F9255B0700002117E9 /* APIRouter.swift in Sources */,
 				96C433DB25542321006E62BB /* UIViewController+ImageView.swift in Sources */,
 				962D3BF0254C8911003E5EB5 /* ListAPIManager.swift in Sources */,
+				9647ACC8255EBB8D003554F5 /* SignInVCPresenter.swift in Sources */,
 				962D3BEC254C8840003E5EB5 /* TodoVC+TableView.swift in Sources */,
 				962D3BD8254C72A2003E5EB5 /* UIViewContrroller+UIView.swift in Sources */,
 				B76E56BF2548AFA000C13D43 /* AuthAPIManager.swift in Sources */,
 				962D3BDD254C7C23003E5EB5 /* SignUpVC+UpdateUI.swift in Sources */,
+				9647ACD2255EC21D003554F5 /* SignUpVCPresenter.swift in Sources */,
 				962D3C06254CA7A8003E5EB5 /* AllTasks.swift in Sources */,
 				B76E56952548A24A00C13D43 /* TodoListVC.swift in Sources */,
 				96C433DE2554238B006E62BB /* ProfileVC+UpdateUI.swift in Sources */,
+				9647ACD9255EC660003554F5 /* TodoPresenter.swift in Sources */,
 				962D3BE9254C87C0003E5EB5 /* TodoVCTableViewCell.swift in Sources */,
 				B76E56912548A24A00C13D43 /* AppDelegate.swift in Sources */,
+				9647ACD5255EC534003554F5 /* SignUpVC+ReadSignData.swift in Sources */,
 				B76E56C52548BACC00C13D43 /* UserData.swift in Sources */,
 				B76E56B92548A76600C13D43 /* SignInVC.swift in Sources */,
 				B76E56BC2548A84600C13D43 /* SignUpVC.swift in Sources */,
 				B76E56C72548BEE100C13D43 /* UserDefaultsManager.swift in Sources */,
+				9647ACCC255EBF90003554F5 /* SignInVC+ReadLoginData.swift in Sources */,
 				96B3CC89254DB0A000EE0471 /* ProfileVC+TableView.swift in Sources */,
 				B76E56B52548A63E00C13D43 /* UIViewController+Functions.swift in Sources */,
 				96B3CC86254DAD4200EE0471 /* ProfileTableViewCell.swift in Sources */,
+				9647ACE6255EDAF5003554F5 /* profileVC+ReadData.swift in Sources */,
+				9647ACC3255EA7C6003554F5 /* Trash.swift in Sources */,
 				962D3BD5254C712C003E5EB5 /* SignInVC+UpdateUI.swift in Sources */,
 				962D3BF6254C95DF003E5EB5 /* TaskData.swift in Sources */,
+				9647ACE1255ECC79003554F5 /* ProfileVCPresenter.swift in Sources */,
 				B76E56C12548B0FD00C13D43 /* LoginResponse.swift in Sources */,
 				962D3BF3254C8B07003E5EB5 /* TodoVC+UpdateUI.swift in Sources */,
 				B76E56C32548B2B100C13D43 /* Constants.swift in Sources */,

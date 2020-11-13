@@ -23,6 +23,8 @@ class ProfileVC: UIViewController {
     var headArray = ["Name", "Email" ,"Age"]
     var imagePicker = UIImagePickerController()
     var userID: String?
+    var Chars = ""
+    var presenter: ProfilePresenter!
     // MARK:- LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,22 +51,7 @@ class ProfileVC: UIViewController {
 
     // MARK:- Profile Data Methods
     func getProfileData(){
-        APIManager.getProfile { (err, profileData) in
-            self.profileOfData = profileData
-            self.userID = self.profileOfData.id
-            self.profileDictionary["Name"] = self.profileOfData.name
-            self.profileDictionary["Email"] = self.profileOfData.email
-            self.profileDictionary["Age"] = "\(self.profileOfData.age)"
-            self.profileTableView.reloadData()
-            
-            let firstCharcters = self.getCharacters(name: self.profileOfData.name)
-            if UserDefaultsManager.shared().imgLabel == true {}
-            else {
-                self.imageLabel.isHidden = false
-                self.imageLabel.text = firstCharcters
-            }
-            self.showProfileImage()
-        }        
+        presenter.getProfileData()
     }
 
     // MARK:- Public Methods

@@ -16,11 +16,22 @@ enum APIRouter: URLRequestConvertible{
     case signUp(_ name: String , _ email: String, _ password: String, _ age: Int)
     case getTodos
     case logout
+    case getProfile
+    case editProfile(_ age: Int)
+    case getPhoto(_ id: String)
+//    case uploadPhoto(_ data:Data)
+//
+    case addTask(_ description:String)
+    case deleteTask(_ id: String)
     // MARK: - HttpMethod
     private var method: HTTPMethod {
         switch self{
-        case .getTodos:
+        case .getTodos, .getProfile, .getPhoto:
             return .get
+        case .editProfile:
+            return .put
+        case .deleteTask:
+            return .delete
         default:
             return .post
         }
@@ -34,6 +45,15 @@ enum APIRouter: URLRequestConvertible{
         case .signUp(let name, let email, let password, let age):
           return [ParameterKeys.name: name,ParameterKeys.email: email,
                                          ParameterKeys.password: password, ParameterKeys.age: age]
+        case .editProfile(let age):
+            return [ParameterKeys.age: age]
+        case .getPhoto(let id):
+            return ["_id": id]
+        case .addTask(let description):
+            return [ParameterKeys.description: description]
+            
+        case .deleteTask(let id):
+            return ["_id": id]
         default:
             return nil
         }
@@ -49,24 +69,42 @@ enum APIRouter: URLRequestConvertible{
             return URLs.addTask
         case .logout:
             return URLs.logout
+        
+        case .getProfile, .editProfile:
+            return URLs.profile
+        
             
+        case .getPhoto(let id):
+            return "user/\(id)/avatar"
+//
+//        case .uploadPhoto:
+//            return URLs.postImage
+            
+        case .addTask:
+            return URLs.addTask
+            
+        case .deleteTask(let id):
+            return URLs.addTask + "/\(id)"
         }
     }
     // MARK: - URLRequestConvertible
     func asURLRequest() throws -> URLRequest {
         let url = try URLs.base.asURL()
+        
         var urlRequest = URLRequest(url: url.appendingPathComponent(path))
+       
         //httpMethod
         urlRequest.httpMethod = method.rawValue
         switch self {
-        case .getTodos, .logout:
+        case  .logout, .getProfile:
             urlRequest.setValue("Bearer \(UserDefaultsManager.shared().token ?? "")",
             forHTTPHeaderField: HeaderKeys.Authorization)
-        case .signUp:
+        case .signUp, .editProfile, .addTask, .getTodos, .deleteTask:
             urlRequest.setValue("Bearer \(UserDefaultsManager.shared().token ?? "")",
             forHTTPHeaderField: HeaderKeys.Authorization)
             urlRequest.setValue("application/json", forHTTPHeaderField: HeaderKeys.contentType)
         default:
+            
             break
         }
         urlRequest.setValue("application/json", forHTTPHeaderField: HeaderKeys.contentType)
@@ -74,10 +112,27 @@ enum APIRouter: URLRequestConvertible{
         // HTTP Body
         let httpBody: Data? = {
             switch self {
+            
+                
             default:
                 return nil
             }
         }()
+        
+//        var multipartFormData: MultipartFormData {
+//                let multipartFormData = MultipartFormData()
+//                switch self {
+//                case .uploadPhoto(let data):
+//                    AF.upload(multipartFormData: { (form: MultipartFormData) in
+//                        multipartFormData.append(data, withName: "avatar", fileName: "avatar.jpeg", mimeType: "image/jpeg")
+//                    }, with: MultipartFormData.encodingMemoryThreshold as! URLRequestConvertible)
+//
+//                default: ()
+//                }
+//
+//                return multipartFormData
+//            }
+        
         
         // Encoding
         let encoding: ParameterEncoding = {

@@ -11,6 +11,7 @@ extension SignUpVC {
  
     // MARK:- UI Method
     func updateUI(){
+        presenter = SignUpPresenter(view: self)
         nameView.setupViews(radius: 8)
         ageView.setupViews(radius: 8)
         emailView.setupViews(radius: 8)
@@ -29,10 +30,7 @@ extension SignUpVC {
     
     func signUpData(){
         activityView.isHidden = false
-        APIManager.signUp(name: nameTextField.text!, email: emailTextField.text!, password: passwordTextField.text!, age: Int(ageTextField.text!)!){ (response) in
-            self.activityView.isHidden = true
-            self.dismiss(animated: true, completion: nil)
-        }
+        presenter.signUp(nameTextField.text!, emailTextField.text!, passwordTextField.text!, Int(ageTextField.text!)!)
     }
     
     // MARK:- Validation Method

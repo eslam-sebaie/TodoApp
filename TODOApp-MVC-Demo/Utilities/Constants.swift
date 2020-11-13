@@ -28,8 +28,8 @@ struct URLs {
     static let base = "https://api-nodejs-todolist.herokuapp.com/"
     static let login = "user/login"
     static let register = "user/register"
-    static let addTask = base + "task"
-    static let profile = base + "user/me"
+    static let addTask = "task"
+    static let profile = "user/me"
     static let logout = "user/logout"
     static let postImage = base + "user/me/avatar"
     

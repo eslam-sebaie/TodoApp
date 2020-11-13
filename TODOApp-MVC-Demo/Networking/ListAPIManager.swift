@@ -12,66 +12,52 @@ import Alamofire
 class ListAPIManager {
     
    class func addTask(description: String, completion: @escaping() -> Void) {
-        let hedders: HTTPHeaders = [HeaderKeys.contentType: "application/json", HeaderKeys.Authorization: "Bearer \(UserDefaultsManager.shared().token ?? "")"]
-        let params = [ParameterKeys.description: description]
-        
-        AF.request(URLs.addTask, method: .post, parameters: params, encoding: JSONEncoding.default, headers: hedders).response {
-            response in
-
-            guard response.error == nil else {
-                print(response.error!)
-                completion()
-                return
-            }
-            guard response.data != nil else {
-                print("didn't get any data from API")
-                return
-            }
-               completion()
-        }
+    request1(APIRouter.addTask(description)) { (_, _) in
+        completion()
+      }
     }
     
-    class func getTasks(completion: @escaping(_ error: Error?, [AllTasks]) -> Void) {
-        let hedders: HTTPHeaders = [HeaderKeys.contentType: "application/json", HeaderKeys.Authorization: "Bearer \(UserDefaultsManager.shared().token ?? "")"]
-        AF.request(URLs.addTask, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: hedders).response {
-            response in
-            guard response.error == nil else {
-                print(response.error!)
-                
-                return
-            }
-            
-            guard let data = response.data else {
-                print("didn't get any data from API")
-                return
-            }
-            
-            do {
-                let decoder = JSONDecoder()
-                let taskData = try decoder.decode(Task.self, from: data).data
-                completion(nil, taskData)
-            } catch let error {
-                print(error)
-            }
+    class func getTasks(completion: @escaping(Result<(Task), Error>) -> Void) {
+        
+        request(APIRouter.getTodos) { (response) in
+            completion(response)
         }
     }
     
     class func deleteTask(id: String, completion: @escaping() -> Void) {
-     let hedders: HTTPHeaders = [HeaderKeys.contentType: "application/json", HeaderKeys.Authorization: "Bearer \(UserDefaultsManager.shared().token ?? "")"]
-
-        AF.request(URLs.addTask + "/\(id)", method: .delete, parameters: nil, encoding: JSONEncoding.default, headers: hedders).response {
-             response in
-
-             guard response.error == nil else {
-                 print(response.error!)
-                 completion()
-                 return
-             }
-             guard response.data != nil else {
-                 print("didn't get any data from API")
-                 return
-             }
-                completion()
-         }
+        
+        request1(APIRouter.deleteTask(id)) { (_, _) in
+            completion()
+        }
      }
+    
+}
+extension ListAPIManager{
+    // MARK:- The request function to get results in a closure
+    private static func request<T: Decodable>(_ urlConvertible: URLRequestConvertible, completion:  @escaping (Result<T, Error>) -> ()) {
+        // Trigger the HttpRequest using AlamoFire
+        AF.request(urlConvertible).responseDecodable { (response: AFDataResponse<T>) in
+            switch response.result {
+            case .success(let value):
+                completion(.success(value))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+        .responseJSON { response in
+            print(response)
+        }
+    }
+    
+    private static func request1(_ urlConvertible: URLRequestConvertible, completion:  @escaping (_ error: Error?,_ data: Any) -> ()) {
+        
+        // Trigger the HttpRequest using AlamoFire
+        AF.request(urlConvertible).response { (response: AFDataResponse) in
+            print("ok1")
+        }
+        .responseJSON { response in
+            print(response)
+            completion(nil, response)
+        }
+    }
 }

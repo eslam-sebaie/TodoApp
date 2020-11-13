@@ -18,6 +18,8 @@ class TodoListVC: UIViewController {
     
     var todoTasks = [AllTasks]()
     var index = 0
+    
+    var presenter: TodoPresenter!
     // MARK:- Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,10 +48,7 @@ class TodoListVC: UIViewController {
             show_Alert("Enter Your Task.")
             return
         }
-        ListAPIManager.addTask(description: todoTextField.text!) { [self] in
-            self.getList()
-            self.todoTextField.text = ""
-        }
+        presenter.sendTask(todoTextField.text!)
     }
     
 

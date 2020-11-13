@@ -26,6 +26,7 @@ class SignUpVC: UIViewController {
     
     @IBOutlet weak var activityView: UIView!
     
+    var presenter: SignUpPresenter!
     
     // MARK:- Lifecycle methods
     override func viewDidLoad() {

@@ -12,6 +12,7 @@ extension SignInVC {
  
     // MARK:- UI Method
     func updateUI(){
+        presenter = SignInPresenter(view: self)
         emailView.setupViews(radius: 8)
         passView.setupViews(radius: 8)
         blurView.setupViews(radius: 16)
@@ -21,33 +22,8 @@ extension SignInVC {
     }
     
     func loginData(){
-        activityView.isHidden = false
-//        APIManager.logIn(with: emailTextField.text!, password: passwordTextField.text!) { (error, loginData) in
-//            if let error = error {
-//                self.show_Alert("Wonge Email Or Password.")
-//                self.activityView.isHidden = true
-//                print(error.localizedDescription)
-//            } else if let loginData = loginData {
-//                UserDefaultsManager.shared().token = loginData.token
-//            }
-//
-//
-//            self.activityView.isHidden = true
-//            self.present(TodoListVC.create(), animated: true, completion: nil)
-//        }
-        
-        APIManager.logIn(with: emailTextField.text!, password: passwordTextField.text!){ (response) in
-            switch response {
-            case .failure(let error):
-                self.show_Alert("Wonge Email Or Password.")
-                print(error.localizedDescription)
-            case .success(let result):
-                UserDefaultsManager.shared().token = result.token
-                self.activityView.isHidden = true
-                self.present(TodoListVC.create(), animated: true, completion: nil)
-            }
-        
-        }
+        activityView.isHidden = false        
+        presenter.login(emailTextField.text!, passwordTextField.text!)
     }
     
     // MARK:- Valid Method

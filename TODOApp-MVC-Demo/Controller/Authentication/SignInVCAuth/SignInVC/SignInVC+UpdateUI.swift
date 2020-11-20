@@ -18,35 +18,27 @@ extension SignInVC {
         blurView.setupViews(radius: 16)
         signInDesign.setupViews(radius: 8)
         activityView.setupViews(radius: 16)
-        activityView.isHidden = true
+        viewLoader(setter: true)
+    }
+    
+    func presentAlert(_ title: String) {
+        show_Alert(title)
+    }
+    func viewLoader(setter: Bool){
+        self.activityView.isHidden = setter
+    }
+    func switchToMain(){
+        let navigationController = UINavigationController(rootViewController: TodoListVC.create())
+        AppDelegate.shared().window?.rootViewController = navigationController
+        
     }
     
     func loginData(){
-        activityView.isHidden = false        
-        presenter.login(emailTextField.text!, passwordTextField.text!)
+        presenter.tryLogin(emailTextField.text!, passwordTextField.text!)
     }
     
-    // MARK:- Valid Method
-    func valid() -> Bool{
-        guard let email = emailTextField.text , !email.isEmpty else {
-            show_Alert("Enter Your EmailAddress.")
-            return false
-        }
-        guard isValidEmail(email) else {
-            show_Alert("Enter Your Correct Email.")
-            return false
-        }
-        guard let pass = passwordTextField.text, !pass.isEmpty else {
-            show_Alert("Enter Your Password.")
-            return false
-        }
-        guard isPasswordValid(pass) else {
-            show_Alert("Enter Your Correct Password.")
-            return false
-        }
-        return true
-      
-    }
+    
+    
     
     
 }

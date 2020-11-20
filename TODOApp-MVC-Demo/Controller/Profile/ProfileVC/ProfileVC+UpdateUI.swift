@@ -26,36 +26,48 @@ extension ProfileVC {
         activityView.setupViews(radius: 16)
         imageLabel.isHidden = true
     }
+    
+    func presentAlert(_ title: String) {
+        show_Alert(title)
+    }
+    func viewLoader(setter: Bool){
+        self.activityView.isHidden = setter
+    }
+    func switchToSignIn(){
+        let navigationController = UINavigationController(rootViewController: SignInVC.create())
+        AppDelegate.shared().window?.rootViewController = navigationController
+        
+    }
+    
     @objc func openGallery(tabGesture: UITapGestureRecognizer) {
         self.setypImagePicker()
     }
     
-//    func showProfileImage(){
-//        presenter.showProfileImage(userID!)
-//    }
-    
+
     func editProfile(){
-        let alertController = UIAlertController(title: "Edit Your Age", message: "", preferredStyle: .alert)
+        presentEditAlert(title: "Edit Your Age", tfPlaceHolder: "Enter New Age", actionTitle: "Save") { (age) in
+            self.activityView.isHidden = false
+            self.presenter.editProfile(age: age)
+        }
+    }
+    
+    
+    func presentEditAlert(title: String, tfPlaceHolder: String, actionTitle: String, completion: @escaping(_ age: String) -> ()){
+        let alertController = UIAlertController(title: title, message: "", preferredStyle: .alert)
 
         alertController.addTextField { (textField : UITextField!) -> Void in
-            textField.placeholder = "Enter New Age"
+            textField.placeholder = tfPlaceHolder
             textField.keyboardType = .numberPad
         }
-        let saveAction = UIAlertAction(title: "Save", style: .default, handler: { alert -> Void in
-            self.activityView.isHidden = false
+        let saveAction = UIAlertAction(title: actionTitle, style: .default, handler: { alert -> Void in
             let ageTF = alertController.textFields![0] as UITextField
-            APIManager.editProfile(age: Int(ageTF.text!)!) {
-                    self.getProfileData()
-                    self.activityView.isHidden = true
-            }
-
+            completion(ageTF.text ?? "0")
         })
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil )
         alertController.addAction(saveAction)
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
     }
-    
     
     func downloadImage(with urlString : String , imageCompletionHandler: @escaping (UIImage?) -> Void){
             guard let url = URL.init(string: urlString) else {
@@ -73,10 +85,10 @@ extension ProfileVC {
             }
         }
     
-    func setLabel(){
+    func setLabel(charaters: String){
         self.activityView.isHidden = true
         self.imageLabel.isHidden = false
-        self.imageLabel.text = Chars
+        self.imageLabel.text = charaters
     }
         
 }

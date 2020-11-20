@@ -32,7 +32,7 @@ class ProfileVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        getProfileData()
+        presenter.getProfileData()
     }
     
     // MARK:- Edit Profile Methods
@@ -43,16 +43,9 @@ class ProfileVC: UIViewController {
     
     // MARK:- Logout Methods
     @IBAction func logoutPressed(_ sender: Any) {
-        APIManager.logout {
-            UserDefaultsManager.shared().token = nil
-            self.present(SignInVC.create(), animated: true, completion: nil)
-        }
+        presenter.logOut()
     }
-
-    // MARK:- Profile Data Methods
-    func getProfileData(){
-        presenter.getProfileData()
-    }
+    
 
     // MARK:- Public Methods
     class func create() -> ProfileVC {

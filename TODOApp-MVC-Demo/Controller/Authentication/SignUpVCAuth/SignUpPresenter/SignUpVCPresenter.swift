@@ -8,23 +8,48 @@
 
 import Foundation
 
-protocol sendSignUpData {
-    func setData(success: Bool)
-}
 class SignUpPresenter {
     
-    var delegate: sendSignUpData?
+    var view: SignUpVC!
     
-    init(view: sendSignUpData) {
-        self.delegate = view
+    init(view: SignUpVC) {
+        self.view = view
     }
-    init() {}
+    
+    func valid(name: String?, email:String?, password: String?, age: String?) -> Bool {
+        let response = Validation.shared.validate(values: (type: Validation.ValidationType.alphabeticString, name!),(Validation.ValidationType.email, email!),(Validation.ValidationType.password, password!),(Validation.ValidationType.age, age!))
+        switch response {
+         case .success:
+            return true
+       
+         case .failure(_, let message):
+            print(message.localized())
+            view.presentAlert(message.localized())
+            return false
+                
+        }
+    }
 
     
-    func signUp(_ name: String,_ email: String, _ password: String, _ age:Int){
-    
-        APIManager.signUp(name: name, email: email, password: password, age: age) { (err, success) in
-            self.delegate?.setData(success: success)
+    func trySignUp(_ name: String,_ email: String, _ password: String, _ age:String){
+        if valid(name: name, email: email, password: password, age: age) {
+            self.view.viewLoader(setter: false)
+            signUp(name, email, password, age)
+        }
+       
+    }
+}
+extension SignUpPresenter {
+     func signUp(_ name: String,_ email: String, _ password: String, _ age:String){
+        APIManager.signUp(name: name, email: email, password: password, age: Int(age)!) { (err, success) in
+            if err != nil {
+                self.view.presentAlert("InvalidData.")
+                self.view.viewLoader(setter: true)
+            }
+            else {
+                self.view.viewLoader(setter: true)
+                self.view.switchToSignIn()
+            }
         }
     }
 }

@@ -7,20 +7,16 @@
 //
 
 import UIKit
-protocol ProfileData {
-    func sendProfileData(firstChars: String? ,userID: String?, _ profileDic:Dictionary<String, String>?)
-    func successUpload(success: Bool)
-    
-}
+
 class ProfilePresenter {
     
-    var delegate: ProfileData?
+    var view: ProfileVC!
     var profileDictionary = [String: String]()
     
-    init(view: ProfileData) {
-        self.delegate = view
+    init(view: ProfileVC) {
+        self.view = view
     }
-    init() {}
+   
     
   
     func getProfileData(){
@@ -28,27 +24,58 @@ class ProfilePresenter {
         APIManager.getProfile { (response) in
             switch response {
             case .failure(let error):
-                
                 print(error.localizedDescription)
             case .success(let result):
                 self.profileDictionary["Name"] = result.name
                 self.profileDictionary["Email"] = result.email
                 self.profileDictionary["Age"] = "\(result.age)"
                 let firstCharcters = self.getCharacters(name: result.name)
-                self.delegate?.sendProfileData(firstChars: firstCharcters,userID: result.id, self.profileDictionary)
+                self.view.profileDictionary = self.profileDictionary
+                self.showingImage(chars: firstCharcters, id: result.id)
             }
+        }
+    }
+    
+    func editProfile(age: String){
+        APIManager.editProfile(age: Int(age)!) {
+            self.getProfileData()
+            self.view.viewLoader(setter: true)
+        }
+    }
+    
+    func logOut(){
+        APIManager.logout {
+            UserDefaultsManager.shared().token = nil
+            self.view.switchToSignIn()
         }
     }
     
     func uploadProfileImage(_ avatar: UIImage){
         APIManager.uploadPhoto(avatar: avatar) {
             UserDefaultsManager.shared().imgLabel = true
-            self.delegate?.successUpload(success: true)
+            self.view.viewLoader(setter: true)
         }
     }
     
-    func getCharacters(name: String) -> String{
+    private func getCharacters(name: String) -> String{
        let chars = name.components(separatedBy: " ").reduce("") { ($0 == "" ? "" : "\($0.first!)") + "\($1.first!)" }
         return chars
+    }
+    
+    private func showingImage(chars: String, id: String){
+        if UserDefaultsManager.shared().imgLabel == true {
+            self.view.downloadImage(with :"\(URLs.base)user/\(id)/avatar"){image in
+                guard let image  = image else {
+                    self.view.setLabel(charaters: chars)
+                    return
+                }
+                self.view.userImageView.image = image
+                self.view.viewLoader(setter: true)
+            }
+        }
+        else {
+            self.view.setLabel(charaters: chars)
+        }
+        self.view.profileTableView.reloadData()
     }
 }

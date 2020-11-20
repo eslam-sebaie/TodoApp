@@ -20,6 +20,7 @@ class TodoListVC: UIViewController {
     var index = 0
     
     var presenter: TodoPresenter!
+    
     // MARK:- Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +29,7 @@ class TodoListVC: UIViewController {
     }
     // MARK:- WillAppear Method
     override func viewWillAppear(_ animated: Bool) {
-        getList()
+        presenter.getList()
     }
     
     // MARK:- ShowProfile Method
@@ -38,16 +39,11 @@ class TodoListVC: UIViewController {
     
     // MARK:- Logout Method
     @IBAction func logoutPressed(_ sender: Any) {
-        self.present(SignInVC.create(), animated: true, completion: nil)
+        presenter.logOut()
     }
     
     // MARK:- Write ToDo Text Method
     @IBAction func sendPressed(_ sender: Any) {
-        activityView.isHidden = false
-        guard let msg = todoTextField.text , !msg.isEmpty else {
-            show_Alert("Enter Your Task.")
-            return
-        }
         presenter.sendTask(todoTextField.text!)
     }
     

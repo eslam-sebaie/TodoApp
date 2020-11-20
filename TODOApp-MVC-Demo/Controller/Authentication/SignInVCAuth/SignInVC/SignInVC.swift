@@ -28,16 +28,17 @@ class SignInVC: UIViewController {
     
     // MARK:- SignIn Button
     @IBAction func signInPressed(_ sender: Any) {
-        if valid() {
-            loginData()
-        }
+        loginData()
     }
+    
+    
     
     // MARK:- SignUP Button
     @IBAction func signUpPressed(_ sender: Any) {
         let signUp = SignUpVC.create()
         self.present(signUp, animated: true, completion: nil)
     }
+ 
     
     // MARK:- Public Methods
     class func create() -> SignInVC {

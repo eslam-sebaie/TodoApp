@@ -20,10 +20,21 @@ extension TodoListVC {
         mainView.bottomAnchor.constraint(equalTo: testView.topAnchor, constant: -20).isActive = true
         
     }
-    // MARK:- GetList Method
-    func getList(){
-        presenter.getList()
+    
+    func presentAlert(_ title: String) {
+        show_Alert(title)
     }
+    func viewLoader(setter: Bool){
+        self.activityView.isHidden = setter
+    }
+    func switchToSignIn(){
+        let navigationController = UINavigationController(rootViewController: SignInVC.create())
+        AppDelegate.shared().window?.rootViewController = navigationController
+        
+    }
+    
+    
+    
     
     func showingDeleteAlert(){
         let alertController = UIAlertController(title: "Are You Sure You Want To Delete This Item?", message: "", preferredStyle: .alert)

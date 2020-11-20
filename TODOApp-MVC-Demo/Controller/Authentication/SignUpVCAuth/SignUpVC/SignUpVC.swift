@@ -36,9 +36,7 @@ class SignUpVC: UIViewController {
     
     // MARK:- SignUp Method
     @IBAction func signUpPressed(_ sender: Any) {
-        if valid() {
-            signUpData()
-        }
+        signUpData()
     }
     
     // MARK:- Public Methods

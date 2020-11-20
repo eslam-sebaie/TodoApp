@@ -7,36 +7,49 @@
 //
 
 import Foundation
-protocol TaskData {
-    func sendTaskData(task: Task?, error:Error?)
-    func successData(success: Bool)
-}
 class TodoPresenter {
     
-    var delegate: TaskData?
+    var view: TodoListVC!
     
-    init(view: TaskData) {
-        self.delegate = view
+    init(view: TodoListVC) {
+        self.view = view
     }
-    init() {}
     
     func getList(){
         
         ListAPIManager.getTasks { (response) in
          switch response {
-         case .failure(let err):
-            self.delegate?.sendTaskData(task: nil, error: err)
+         case .failure( _):
+            self.view.presentAlert("ERROR")
          case .success(let Task):
-            self.delegate?.sendTaskData(task: Task, error: nil)
+            self.view.todoTasks = Task.data
+            self.view.viewLoader(setter: true)
+            self.view.todoTableView.reloadData()
             }
         }
     }
     
-    func sendTask(_ description: String){
-        ListAPIManager.addTask(description: description) {
-            self.getList()
-            self.delegate?.successData(success: true)
+    func logOut(){
+        APIManager.logout {
+            UserDefaultsManager.shared().token = nil
+            self.view.switchToSignIn()
         }
+    }
+    
+    private func msgValidation(_ description: String?) -> Bool{
+        self.view.viewLoader(setter: false)
+        guard let msg = description , !msg.isEmpty else {
+            self.view.presentAlert("Enter Your Task.")
+            return false
+        }
+        return true
+    }
+    
+    func sendTask(_ description: String?){
+        if msgValidation(description!) {
+            sendTodo(description!)
+        }
+        
     }
     
     func deleteTask(_ id: String) {
@@ -46,4 +59,12 @@ class TodoPresenter {
     }
         
     
+}
+extension TodoPresenter {
+    func sendTodo(_ description: String?){
+        ListAPIManager.addTask(description: description!) {
+            self.getList()
+            self.view.todoTextField.text = ""
+        }
+    }
 }

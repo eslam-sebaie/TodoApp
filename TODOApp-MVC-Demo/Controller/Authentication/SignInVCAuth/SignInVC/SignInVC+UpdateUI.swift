@@ -12,7 +12,7 @@ extension SignInVC {
  
     // MARK:- UI Method
     func updateUI(){
-        presenter = SignInPresenter(view: self)
+        
         emailView.setupViews(radius: 8)
         passView.setupViews(radius: 8)
         blurView.setupViews(radius: 16)

@@ -11,7 +11,7 @@ import UIKit
 import Kingfisher
 extension ProfileVC {
     func updateUI(){
-        presenter = ProfilePresenter(view: self)
+        
         imagePicker.delegate = self
         userImageView.setupViews(radius: 60)
         userImageView.dropShadow()

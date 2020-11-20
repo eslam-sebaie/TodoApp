@@ -43,6 +43,7 @@ class SignInVC: UIViewController {
     // MARK:- Public Methods
     class func create() -> SignInVC {
         let signInVC: SignInVC = UIViewController.create(storyboardName: Storyboards.authentication, identifier: ViewControllers.signInVC)
+        signInVC.presenter = SignInPresenter(view: signInVC)
         return signInVC
     }
 }

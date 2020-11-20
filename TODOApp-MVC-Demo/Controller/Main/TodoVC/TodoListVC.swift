@@ -51,6 +51,7 @@ class TodoListVC: UIViewController {
     // MARK:- Public Methods
     class func create() -> TodoListVC {
         let todoListVC: TodoListVC = UIViewController.create(storyboardName: Storyboards.main, identifier: ViewControllers.todoListVC)
+        todoListVC.presenter = TodoPresenter(view: todoListVC)
         return todoListVC
     }
 }

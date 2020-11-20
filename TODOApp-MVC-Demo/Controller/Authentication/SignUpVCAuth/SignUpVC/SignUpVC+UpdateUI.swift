@@ -11,7 +11,7 @@ extension SignUpVC {
  
     // MARK:- UI Method
     func updateUI(){
-        presenter = SignUpPresenter(view: self)
+        
         nameView.setupViews(radius: 8)
         ageView.setupViews(radius: 8)
         emailView.setupViews(radius: 8)

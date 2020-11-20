@@ -42,6 +42,7 @@ class SignUpVC: UIViewController {
     // MARK:- Public Methods
     class func create() -> SignUpVC {
         let signUpVC: SignUpVC = UIViewController.create(storyboardName: Storyboards.authentication, identifier: ViewControllers.signUpVC)
+        signUpVC.presenter = SignUpPresenter(view: signUpVC)
         return signUpVC
     }
 }

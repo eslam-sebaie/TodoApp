@@ -50,6 +50,7 @@ class ProfileVC: UIViewController {
     // MARK:- Public Methods
     class func create() -> ProfileVC {
         let profileVC: ProfileVC = UIViewController.create(storyboardName: Storyboards.main, identifier: ViewControllers.profileVC)
+        profileVC.presenter = ProfilePresenter(view: profileVC)
         return profileVC
     }
 }

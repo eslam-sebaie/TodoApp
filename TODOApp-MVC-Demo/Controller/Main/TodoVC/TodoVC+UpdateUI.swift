@@ -11,7 +11,7 @@ import UIKit
 extension TodoListVC {
     // MARK:- UI Method
     func updateUI(){
-        presenter = TodoPresenter(view: self)
+        
         mainView.setupViews(radius: 16)
         mainView.dropShadow()
         determineHeight(mainView, identifier: HeightKeys.listHeight, heightNumber: 50)

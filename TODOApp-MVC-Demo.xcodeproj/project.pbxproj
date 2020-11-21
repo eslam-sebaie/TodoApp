@@ -121,7 +121,6 @@
 			isa = PBXGroup;
 			children = (
 				9647ACC5255EBAE3003554F5 /* SignInVC */,
-				9647ACC6255EBAFA003554F5 /* SignInPresenter */,
 			);
 			path = SignInVCAuth;
 			sourceTree = "<group>";
@@ -130,7 +129,6 @@
 			isa = PBXGroup;
 			children = (
 				9647ACCE255EC03D003554F5 /* SignUpVC */,
-				9647ACCF255EC05B003554F5 /* SignUpPresenter */,
 			);
 			path = SignUpVCAuth;
 			sourceTree = "<group>";
@@ -211,6 +209,17 @@
 			path = ProfilePresenter;
 			sourceTree = "<group>";
 		};
+		9669267D25693E8B0006860D /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				9647ACC6255EBAFA003554F5 /* SignInPresenter */,
+				9647ACCF255EC05B003554F5 /* SignUpPresenter */,
+				9647ACD7255EC636003554F5 /* TodoVCPresenter */,
+				9647ACDF255ECC65003554F5 /* ProfilePresenter */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		9699518F25680580009AE4D7 /* Validator */ = {
 			isa = PBXGroup;
 			children = (
@@ -224,7 +233,6 @@
 			children = (
 				96C6840E25509B5C00A32452 /* ProfileVC */,
 				96C6841025509B6B00A32452 /* ProfileVC+TableView */,
-				9647ACDF255ECC65003554F5 /* ProfilePresenter */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -276,6 +284,7 @@
 				B76E56A62548A2C900C13D43 /* Extensions */,
 				B76E56A82548A2E400C13D43 /* Model */,
 				B76E56A92548A2EA00C13D43 /* View */,
+				9669267D25693E8B0006860D /* Presenter */,
 				B76E56AA2548A2F200C13D43 /* Controller */,
 				B76E56A72548A2D300C13D43 /* Resources */,
 				B76E569E2548A24C00C13D43 /* Info.plist */,
@@ -389,7 +398,6 @@
 			children = (
 				962D3BE5254C877D003E5EB5 /* TodoVC */,
 				962D3BE7254C878A003E5EB5 /* TodoVC+TableView */,
-				9647ACD7255EC636003554F5 /* TodoVCPresenter */,
 			);
 			path = Main;
 			sourceTree = "<group>";

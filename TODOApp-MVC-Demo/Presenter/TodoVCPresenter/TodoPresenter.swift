@@ -24,7 +24,7 @@ class TodoPresenter {
          case .success(let Task):
             self.view.todoTasks = Task.data
             self.view.viewLoader(setter: true)
-            self.view.todoTableView.reloadData()
+            self.view.todoView.todoTableView.reloadData()
             }
         }
     }
@@ -64,7 +64,7 @@ extension TodoPresenter {
     func sendTodo(_ description: String?){
         ListAPIManager.addTask(description: description!) {
             self.getList()
-            self.view.todoTextField.text = ""
+            self.view.todoView.todoTextField.text = ""
         }
     }
 }

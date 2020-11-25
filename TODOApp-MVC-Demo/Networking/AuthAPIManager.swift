@@ -19,11 +19,22 @@ class APIManager {
     
     class func signUp(name: String ,email: String, password: String, age: Int, completion: @escaping (_ error:Error?, _ Success: Bool)-> ()){
         
-        request1(APIRouter.signUp(name, email, password, age)) { (err, success) in
+//        request1(APIRouter.signUp(name, email, password, age)) { (err, success) in
+//            if let err = err {
+//                completion(err, false)
+//            }
+//            else {
+//                completion(nil, true)
+//            }
+//        }
+        let userData = UserData1(name: name, email: email, password: password, age: age)
+        request1(APIRouter.signUp(userData)) { (err, success) in
             if let err = err {
+                print("err")
                 completion(err, false)
             }
             else {
+                print("ookok")
                 completion(nil, true)
             }
         }

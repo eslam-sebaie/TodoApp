@@ -22,6 +22,22 @@ struct UserData: Codable {
     }
 }
 
+
+struct UserData1: Codable {
+    
+ 
+    var name, email, password: String
+    var age: Int
+    
+    
+    enum CodingKeys: String, CodingKey {
+        case age, name, email, password
+    
+        
+    }
+}
+
+
 struct uploadImage: Codable {
     var img: Data
     
@@ -30,6 +46,4 @@ struct uploadImage: Codable {
     }
 }
 
-//struct retLog: Decodable {
-//    var bo: Bool
-//}
+

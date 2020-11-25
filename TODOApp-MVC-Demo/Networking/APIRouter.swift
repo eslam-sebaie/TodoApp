@@ -13,7 +13,8 @@ enum APIRouter: URLRequestConvertible{
     
     // The endpoint name
     case login(_ email: String, _ password: String)
-    case signUp(_ name: String , _ email: String, _ password: String, _ age: Int)
+//    case signUp(_ name: String , _ email: String, _ password: String, _ age: Int)
+    case signUp(_ data: UserData1)
     case getTodos
     case logout
     case getProfile
@@ -41,9 +42,9 @@ enum APIRouter: URLRequestConvertible{
         switch self {
         case .login(let email, let password):
             return [ParameterKeys.email: email, ParameterKeys.password: password]
-        case .signUp(let name, let email, let password, let age):
-          return [ParameterKeys.name: name,ParameterKeys.email: email,
-                                         ParameterKeys.password: password, ParameterKeys.age: age]
+//        case .signUp(let name, let email, let password, let age):
+//          return [ParameterKeys.name: name,ParameterKeys.email: email,
+//                                         ParameterKeys.password: password, ParameterKeys.age: age]
         case .editProfile(let age):
             return [ParameterKeys.age: age]
      
@@ -105,12 +106,22 @@ enum APIRouter: URLRequestConvertible{
         }
         urlRequest.setValue("application/json", forHTTPHeaderField: HeaderKeys.contentType)
         
-        
+        let body: Data? = {
+            switch self {
+            case .signUp(let body):
+                return encodeToJSON(body)
+            default:
+                return nil
+            
+            }
+        }()
+        urlRequest.httpBody = body
         
         // Encoding
         let encoding: ParameterEncoding = {
             switch method {
             case .get, .delete:
+                
                 return URLEncoding.default
             default:
                 return JSONEncoding.default
@@ -120,6 +131,9 @@ enum APIRouter: URLRequestConvertible{
         print(try encoding.encode(urlRequest, with: parameters))
         return try encoding.encode(urlRequest, with: parameters)
     }
+    
+    
+    
     var httpBody: MultipartFormData {
             let multipartFormData = MultipartFormData()
             switch self {

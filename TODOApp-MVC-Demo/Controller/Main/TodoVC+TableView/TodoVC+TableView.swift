@@ -11,13 +11,13 @@ import UIKit
 extension TodoListVC: UITableViewDataSource {
     // MARK:- TableView DataSource Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        determineHeight(mainView, identifier: HeightKeys.listHeight, heightNumber: 50 + (todoTasks.count * 60))
+        determineHeight(todoView.mainView, identifier: HeightKeys.listHeight, heightNumber: 50 + (todoTasks.count * 60))
       
         return todoTasks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = todoTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TodoVCTableViewCell
+        let cell = todoView.todoTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TodoVCTableViewCell
         cell.delegate = self
         cell.todaLabel.text = todoTasks[indexPath.row].description
         cell.todoImage.image = UIImage(named: "todolist")

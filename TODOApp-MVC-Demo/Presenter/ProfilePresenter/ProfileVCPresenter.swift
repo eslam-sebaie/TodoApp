@@ -69,13 +69,13 @@ class ProfilePresenter {
                     self.view.setLabel(charaters: chars)
                     return
                 }
-                self.view.userImageView.image = image
+                self.view.profileView.userImageView.image = image
                 self.view.viewLoader(setter: true)
             }
         }
         else {
             self.view.setLabel(charaters: chars)
         }
-        self.view.profileTableView.reloadData()
+        self.view.profileView.profileTableView.reloadData()
     }
 }

@@ -9,34 +9,32 @@
 import UIKit
 
 class SignUpVC: UIViewController {
-
-    
-    @IBOutlet weak var blurView: UIVisualEffectView!
-    @IBOutlet weak var nameView: UIView!
-    @IBOutlet weak var emailView: UIView!
-    @IBOutlet weak var passView: UIView!
-    @IBOutlet weak var ageView: UIView!
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var ageTextField: UITextField!
-    @IBOutlet weak var signUpDesign: UIButton!
-    
-    @IBOutlet weak var passwordValidation: UILabel!
-    
-    @IBOutlet weak var activityView: UIView!
-    
+ 
+    @IBOutlet var signUpView: SignUpView!
     var presenter: SignUpPresenter!
     
     // MARK:- Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateUI()
+        
+        signUpView.updateUI()
     }
     
     // MARK:- SignUp Method
     @IBAction func signUpPressed(_ sender: Any) {
-        signUpData()
+        presenter.trySignUp(signUpView.nameTextField.text!, signUpView.emailTextField.text!, signUpView.passwordTextField.text!, signUpView.ageTextField.text!)
+    }
+    // MARK:- designableFuncions
+    func presentAlert(_ title: String) {
+        show_Alert(title)
+    }
+    func viewLoader(setter: Bool){
+        signUpView.activityView.isHidden = setter
+    }
+    func switchToSignIn(){
+        let navigationController = UINavigationController(rootViewController: SignInVC.create())
+        AppDelegate.shared().window?.rootViewController = navigationController
+        
     }
     
     // MARK:- Public Methods

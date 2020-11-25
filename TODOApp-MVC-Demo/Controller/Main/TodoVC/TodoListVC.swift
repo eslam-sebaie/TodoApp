@@ -10,21 +10,18 @@ import UIKit
 
 class TodoListVC: UIViewController {
 
-    @IBOutlet weak var mainView: UIView!
-    @IBOutlet weak var testView: UIView!
-    @IBOutlet weak var todoTableView: UITableView!
-    @IBOutlet weak var todoTextField: UITextField!
-    @IBOutlet weak var activityView: UIView!
+   
     
+    @IBOutlet var todoView: TodoListView!
     var todoTasks = [AllTasks]()
     var index = 0
-    
     var presenter: TodoPresenter!
     
     // MARK:- Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
-         updateUI()
+        determineHeight(todoView.mainView, identifier: HeightKeys.listHeight, heightNumber: 50)
+        todoView.updateUI()
         
     }
     // MARK:- WillAppear Method
@@ -44,7 +41,7 @@ class TodoListVC: UIViewController {
     
     // MARK:- Write ToDo Text Method
     @IBAction func sendPressed(_ sender: Any) {
-        presenter.sendTask(todoTextField.text!)
+        presenter.sendTask(todoView.todoTextField.text!)
     }
     
 
@@ -58,7 +55,7 @@ class TodoListVC: UIViewController {
 
 extension TodoListVC: showTrashDelegate {
     func btnTrashTapped(cell: TodoVCTableViewCell) {
-        let indexPath = self.todoTableView.indexPath(for: cell)
+        let indexPath = todoView.todoTableView.indexPath(for: cell)
         index = indexPath!.row
         
     }

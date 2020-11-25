@@ -10,27 +10,22 @@ import UIKit
 
 class SignInVC: UIViewController {
 
-    @IBOutlet weak var blurView: UIVisualEffectView!
-    @IBOutlet weak var emailView: UIView!
-    @IBOutlet weak var passView: UIView!
-    @IBOutlet weak var signInDesign: UIButton!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var activityView: UIView!
+    // MARK:- Outlets
+    @IBOutlet var signInView: SignInView!
     
     var presenter: SignInPresenter!
 
     // MARK:- Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateUI()
+        signInView.updateUI()
+        viewLoader(setter: true)
     }
     
     // MARK:- SignIn Button
     @IBAction func signInPressed(_ sender: Any) {
-        loginData()
+        presenter.tryLogin(signInView.emailTextField.text!, signInView.passwordTextField.text!)
     }
-    
     
     
     // MARK:- SignUP Button
@@ -38,7 +33,20 @@ class SignInVC: UIViewController {
         let signUp = SignUpVC.create()
         self.present(signUp, animated: true, completion: nil)
     }
+    
+    // MARK:- designableFuncions
+    func viewLoader(setter: Bool){
+        signInView.activityView.isHidden = setter
+    }
  
+    func presentAlert(_ title: String) {
+        show_Alert(title)
+    }
+    
+    func switchToMain(){
+        let navigationController = UINavigationController(rootViewController: TodoListVC.create())
+        AppDelegate.shared().window?.rootViewController = navigationController
+    }
     
     // MARK:- Public Methods
     class func create() -> SignInVC {

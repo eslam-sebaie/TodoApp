@@ -13,7 +13,7 @@
         <scene sceneID="6QD-ah-ejZ">
             <objects>
                 <viewController storyboardIdentifier="TodoListVC" modalPresentationStyle="fullScreen" id="xko-eu-rsM" customClass="TodoListVC" customModule="TODOApp_MVC_Demo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="dah-yt-EtK">
+                    <view key="view" contentMode="scaleToFill" id="dah-yt-EtK" customClass="TodoListView" customModule="TODOApp_MVC_Demo" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -217,13 +217,16 @@
                             <constraint firstItem="ze1-gk-Kar" firstAttribute="trailing" secondItem="6Yf-Up-D2W" secondAttribute="trailing" id="zOn-tS-5vA"/>
                             <constraint firstItem="ze1-gk-Kar" firstAttribute="trailing" secondItem="Peo-ix-aOx" secondAttribute="trailing" constant="32" id="zSS-u6-HGf"/>
                         </constraints>
+                        <connections>
+                            <outlet property="activityView" destination="6JB-m3-s6W" id="hEL-hZ-IwT"/>
+                            <outlet property="mainView" destination="Peo-ix-aOx" id="YPL-4H-Qhf"/>
+                            <outlet property="testView" destination="FU1-fp-ZGd" id="PxQ-ex-j32"/>
+                            <outlet property="todoTableView" destination="i0d-00-c4v" id="crJ-Dj-eMq"/>
+                            <outlet property="todoTextField" destination="nmZ-CW-CFt" id="tqJ-Ux-Dka"/>
+                        </connections>
                     </view>
                     <connections>
-                        <outlet property="activityView" destination="6JB-m3-s6W" id="NFb-t9-4lf"/>
-                        <outlet property="mainView" destination="Peo-ix-aOx" id="MHv-Ga-m4b"/>
-                        <outlet property="testView" destination="FU1-fp-ZGd" id="ja7-C6-aau"/>
-                        <outlet property="todoTableView" destination="i0d-00-c4v" id="p19-FE-HAt"/>
-                        <outlet property="todoTextField" destination="nmZ-CW-CFt" id="mbl-rf-oTu"/>
+                        <outlet property="todoView" destination="dah-yt-EtK" id="kT0-49-x1b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="25t-os-KyK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -234,7 +237,7 @@
         <scene sceneID="PFg-Z7-BUS">
             <objects>
                 <viewController storyboardIdentifier="ProfileVC" id="YTY-1E-qzy" customClass="ProfileVC" customModule="TODOApp_MVC_Demo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="lqM-em-jVg">
+                    <view key="view" contentMode="scaleToFill" id="lqM-em-jVg" customClass="ProfileView" customModule="TODOApp_MVC_Demo" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -385,12 +388,15 @@
                             <constraint firstItem="8W5-r6-Okq" firstAttribute="top" secondItem="F5p-Wg-LQB" secondAttribute="bottom" constant="32" id="lM9-kn-DQm"/>
                             <constraint firstItem="rVe-6e-yAq" firstAttribute="trailing" secondItem="8W5-r6-Okq" secondAttribute="trailing" constant="32" id="xVt-DT-NwN"/>
                         </constraints>
+                        <connections>
+                            <outlet property="activityView" destination="bjL-8z-FaT" id="r3H-BU-qnp"/>
+                            <outlet property="imageLabel" destination="7s2-Dm-2Bt" id="1Yw-qD-eAb"/>
+                            <outlet property="profileTableView" destination="8W5-r6-Okq" id="RYv-gP-nra"/>
+                            <outlet property="userImageView" destination="F5p-Wg-LQB" id="424-gw-jAF"/>
+                        </connections>
                     </view>
                     <connections>
-                        <outlet property="activityView" destination="bjL-8z-FaT" id="dHS-hE-mnc"/>
-                        <outlet property="imageLabel" destination="7s2-Dm-2Bt" id="mVz-SP-qNd"/>
-                        <outlet property="profileTableView" destination="8W5-r6-Okq" id="5en-XD-jER"/>
-                        <outlet property="userImageView" destination="F5p-Wg-LQB" id="Eet-Y0-opn"/>
+                        <outlet property="profileView" destination="lqM-em-jVg" id="725-AQ-kbG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cg0-Sj-SPV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

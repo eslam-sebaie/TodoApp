@@ -13,7 +13,7 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="SignInVC" modalPresentationStyle="currentContext" id="BYZ-38-t0r" customClass="SignInVC" customModule="TODOApp_MVC_Demo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="SignInView" customModule="TODOApp_MVC_Demo" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -194,15 +194,18 @@
                             <constraint firstItem="uNK-Rg-6Xh" firstAttribute="leading" secondItem="254-DJ-ceb" secondAttribute="leading" id="ygu-90-xmR"/>
                             <constraint firstItem="leW-Wk-yQE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="zqy-Lq-mHB"/>
                         </constraints>
+                        <connections>
+                            <outlet property="activityView" destination="UKF-vs-Ihq" id="UUX-ip-A6d"/>
+                            <outlet property="blurView" destination="Hzs-Hz-bG3" id="aEx-ye-b9u"/>
+                            <outlet property="emailTextField" destination="elF-Sh-s3n" id="2NO-ch-qxS"/>
+                            <outlet property="emailView" destination="oXD-ol-cmA" id="4bK-Ro-hhO"/>
+                            <outlet property="passView" destination="254-DJ-ceb" id="jqL-cP-f5M"/>
+                            <outlet property="passwordTextField" destination="n9b-gN-CTq" id="fBk-mp-uCE"/>
+                            <outlet property="signInDesign" destination="K3T-k7-rEA" id="nYx-If-rIZ"/>
+                        </connections>
                     </view>
                     <connections>
-                        <outlet property="activityView" destination="UKF-vs-Ihq" id="6yo-nh-rVa"/>
-                        <outlet property="blurView" destination="Hzs-Hz-bG3" id="kzh-vK-K8T"/>
-                        <outlet property="emailTextField" destination="elF-Sh-s3n" id="Tb1-yI-cZW"/>
-                        <outlet property="emailView" destination="oXD-ol-cmA" id="ktL-3d-mU1"/>
-                        <outlet property="passView" destination="254-DJ-ceb" id="3O3-wC-6ce"/>
-                        <outlet property="passwordTextField" destination="n9b-gN-CTq" id="Fdy-VM-8js"/>
-                        <outlet property="signInDesign" destination="K3T-k7-rEA" id="iZO-u1-cC0"/>
+                        <outlet property="signInView" destination="8bC-Xf-vdC" id="e6L-q4-EzD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -213,7 +216,7 @@
         <scene sceneID="cMv-G5-22U">
             <objects>
                 <viewController storyboardIdentifier="SignUpVC" modalPresentationStyle="currentContext" id="T6n-BO-Yei" customClass="SignUpVC" customModule="TODOApp_MVC_Demo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Zpo-mT-JwU">
+                    <view key="view" contentMode="scaleToFill" id="Zpo-mT-JwU" customClass="SignUpView" customModule="TODOApp_MVC_Demo" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -291,7 +294,7 @@
                                             </constraints>
                                         </view>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MsO-rv-Ff9">
-                                            <rect key="frame" x="78.5" y="421" width="193" height="41"/>
+                                            <rect key="frame" x="78.5" y="408" width="193" height="41"/>
                                             <color key="backgroundColor" red="0.29411764709999999" green="0.80000000000000004" blue="0.80392156859999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="41" id="U9V-Yc-AVI"/>
@@ -305,7 +308,7 @@
                                             </connections>
                                         </button>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GLL-tF-vdf">
-                                            <rect key="frame" x="32" y="253" width="286" height="60"/>
+                                            <rect key="frame" x="32" y="240" width="286" height="60"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pass" translatesAutoresizingMaskIntoConstraints="NO" id="qEt-CE-SHg">
                                                     <rect key="frame" x="8" y="12.5" width="35" height="35"/>
@@ -334,7 +337,7 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZOm-DH-zdu">
-                                            <rect key="frame" x="32" y="329" width="286" height="60"/>
+                                            <rect key="frame" x="32" y="316" width="286" height="60"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="age" translatesAutoresizingMaskIntoConstraints="NO" id="8QA-EW-V2B">
                                                     <rect key="frame" x="8" y="12.5" width="35" height="35"/>
@@ -362,17 +365,9 @@
                                                 <constraint firstItem="8QA-EW-V2B" firstAttribute="leading" secondItem="ZOm-DH-zdu" secondAttribute="leading" constant="8" id="tl4-qk-ZqL"/>
                                             </constraints>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upper, Lower Case, Number, More 8 Chararcters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="wAr-0e-xCr">
-                                            <rect key="frame" x="32" y="224" width="286" height="13"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="13" identifier="passHeight" id="0vA-jh-Okg"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <color key="textColor" systemColor="systemRedColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="GLL-tF-vdf" firstAttribute="top" secondItem="NA7-Jt-7OU" secondAttribute="bottom" constant="16" id="2Im-Z9-9LO"/>
                                         <constraint firstItem="Rfb-33-UpR" firstAttribute="top" secondItem="gLC-p9-dY1" secondAttribute="bottom" constant="16" id="3pU-9y-hWO"/>
                                         <constraint firstItem="MsO-rv-Ff9" firstAttribute="width" secondItem="ffk-zH-Xb5" secondAttribute="width" multiplier="0.551429" id="KNd-gR-DHH"/>
                                         <constraint firstItem="ZOm-DH-zdu" firstAttribute="top" secondItem="GLL-tF-vdf" secondAttribute="bottom" constant="16" id="MPH-cr-XOf"/>
@@ -382,17 +377,13 @@
                                         <constraint firstAttribute="trailing" secondItem="Rfb-33-UpR" secondAttribute="trailing" constant="32" id="aMG-av-eLq"/>
                                         <constraint firstItem="gLC-p9-dY1" firstAttribute="centerX" secondItem="ffk-zH-Xb5" secondAttribute="centerX" id="eJX-vq-Qxp"/>
                                         <constraint firstItem="ZOm-DH-zdu" firstAttribute="top" secondItem="GLL-tF-vdf" secondAttribute="bottom" constant="16" id="eTV-A8-TrN"/>
-                                        <constraint firstItem="GLL-tF-vdf" firstAttribute="top" secondItem="wAr-0e-xCr" secondAttribute="bottom" constant="16" id="fwf-a1-Xvv"/>
                                         <constraint firstItem="MsO-rv-Ff9" firstAttribute="top" secondItem="ZOm-DH-zdu" secondAttribute="bottom" constant="32" id="fyj-pY-e1n"/>
-                                        <constraint firstItem="wAr-0e-xCr" firstAttribute="leading" secondItem="NA7-Jt-7OU" secondAttribute="leading" id="gY7-Or-Hep"/>
                                         <constraint firstItem="NA7-Jt-7OU" firstAttribute="leading" secondItem="ffk-zH-Xb5" secondAttribute="leading" constant="32" id="j7U-Yz-0Mh"/>
-                                        <constraint firstItem="wAr-0e-xCr" firstAttribute="top" secondItem="NA7-Jt-7OU" secondAttribute="bottom" id="kxo-e4-maC"/>
                                         <constraint firstItem="Rfb-33-UpR" firstAttribute="leading" secondItem="ffk-zH-Xb5" secondAttribute="leading" constant="32" id="pWw-Sl-dfP"/>
                                         <constraint firstItem="gLC-p9-dY1" firstAttribute="top" secondItem="ffk-zH-Xb5" secondAttribute="top" constant="40" id="pty-aS-REc"/>
                                         <constraint firstAttribute="trailing" secondItem="ZOm-DH-zdu" secondAttribute="trailing" constant="32" id="r15-MD-wJq"/>
                                         <constraint firstAttribute="trailing" secondItem="NA7-Jt-7OU" secondAttribute="trailing" constant="32" id="rtl-0Q-uiO"/>
                                         <constraint firstItem="MsO-rv-Ff9" firstAttribute="centerX" secondItem="ffk-zH-Xb5" secondAttribute="centerX" id="uM7-5R-Nb9"/>
-                                        <constraint firstItem="wAr-0e-xCr" firstAttribute="trailing" secondItem="NA7-Jt-7OU" secondAttribute="trailing" id="wxN-FX-HZj"/>
                                         <constraint firstItem="GLL-tF-vdf" firstAttribute="leading" secondItem="ffk-zH-Xb5" secondAttribute="leading" constant="32" id="zvS-cn-tbG"/>
                                     </constraints>
                                 </view>
@@ -443,20 +434,22 @@
                             <constraint firstItem="O7K-ki-kWr" firstAttribute="top" secondItem="MVh-um-UcQ" secondAttribute="top" constant="-35" id="tZt-Qj-hAT"/>
                             <constraint firstItem="ZD4-pD-Dq7" firstAttribute="trailing" secondItem="vLA-HM-UOW" secondAttribute="trailing" id="wJf-11-asm"/>
                         </constraints>
+                        <connections>
+                            <outlet property="activityView" destination="Qqd-jC-fxG" id="ifg-wt-Zsl"/>
+                            <outlet property="ageTextField" destination="wrf-iZ-nOa" id="swb-vI-CiV"/>
+                            <outlet property="ageView" destination="ZOm-DH-zdu" id="qWg-59-I6J"/>
+                            <outlet property="blurView" destination="MVh-um-UcQ" id="Z7q-zs-kX4"/>
+                            <outlet property="emailTextField" destination="9J4-Uj-DD1" id="8Ws-td-EC9"/>
+                            <outlet property="emailView" destination="NA7-Jt-7OU" id="NpQ-a9-xum"/>
+                            <outlet property="nameTextField" destination="NMf-Dz-kNj" id="Bzn-FI-yfJ"/>
+                            <outlet property="nameView" destination="Rfb-33-UpR" id="IKM-iW-FPd"/>
+                            <outlet property="passView" destination="GLL-tF-vdf" id="2v9-FF-eCK"/>
+                            <outlet property="passwordTextField" destination="yQn-9i-PtX" id="k43-bq-sAM"/>
+                            <outlet property="signUpDesign" destination="MsO-rv-Ff9" id="aRQ-i2-eNz"/>
+                        </connections>
                     </view>
                     <connections>
-                        <outlet property="activityView" destination="Qqd-jC-fxG" id="zD4-yZ-fhw"/>
-                        <outlet property="ageTextField" destination="wrf-iZ-nOa" id="Enc-Xp-n1Y"/>
-                        <outlet property="ageView" destination="ZOm-DH-zdu" id="fPC-9G-BFC"/>
-                        <outlet property="blurView" destination="MVh-um-UcQ" id="Lzg-VT-ejI"/>
-                        <outlet property="emailTextField" destination="9J4-Uj-DD1" id="1wi-5Y-TWi"/>
-                        <outlet property="emailView" destination="NA7-Jt-7OU" id="jJw-Ql-djL"/>
-                        <outlet property="nameTextField" destination="NMf-Dz-kNj" id="JKx-x6-G6S"/>
-                        <outlet property="nameView" destination="Rfb-33-UpR" id="1Au-76-O1o"/>
-                        <outlet property="passView" destination="GLL-tF-vdf" id="nEw-P3-jhz"/>
-                        <outlet property="passwordTextField" destination="yQn-9i-PtX" id="1LQ-0G-yny"/>
-                        <outlet property="passwordValidation" destination="wAr-0e-xCr" id="toZ-wZ-qF3"/>
-                        <outlet property="signUpDesign" destination="MsO-rv-Ff9" id="Q9d-qE-SgS"/>
+                        <outlet property="signUpView" destination="Zpo-mT-JwU" id="fnd-Pk-0Fu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Ax-Qi-4cC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -473,9 +466,6 @@
         <image name="user" width="96" height="96"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

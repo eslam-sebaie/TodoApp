@@ -11,12 +11,7 @@ import Kingfisher
 class ProfileVC: UIViewController {
     
     // MARK:- Outlets
-    @IBOutlet weak var profileTableView: UITableView!
-    @IBOutlet weak var userImageView: UIImageView!
-    @IBOutlet weak var activityView: UIView!
-    @IBOutlet weak var imageLabel: UILabel!
-    
-    
+    @IBOutlet var profileView: ProfileView!
     // MARK:- Variables
     var profileOfData: UserData!
     var profileDictionary = [String:String]()
@@ -28,7 +23,8 @@ class ProfileVC: UIViewController {
     // MARK:- LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateUI()
+        imagePicker.delegate = self
+        profileView.updateUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {

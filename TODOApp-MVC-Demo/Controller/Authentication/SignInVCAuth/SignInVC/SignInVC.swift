@@ -7,13 +7,17 @@
 //
 
 import UIKit
-
+protocol SignInVCProtocol {
+    func viewLoader(setter: Bool)
+    func presentAlert(_ title: String)
+    func switchToMain()
+}
 class SignInVC: UIViewController {
 
     // MARK:- Outlets
     @IBOutlet var signInView: SignInView!
     
-    var presenter: SignInPresenter!
+    var presenter: signInPresenterProtocol!
 
     // MARK:- Lifecycle methods
     override func viewDidLoad() {
@@ -33,8 +37,17 @@ class SignInVC: UIViewController {
         let signUp = SignUpVC.create()
         self.present(signUp, animated: true, completion: nil)
     }
+   
     
-    // MARK:- designableFuncions
+    // MARK:- Public Methods
+    class func create() -> SignInVC {
+        let signInVC: SignInVC = UIViewController.create(storyboardName: Storyboards.authentication, identifier: ViewControllers.signInVC)
+        signInVC.presenter = SignInPresenter(view: signInVC)
+        return signInVC
+    }
+}
+
+extension SignInVC: SignInVCProtocol{
     func viewLoader(setter: Bool){
         signInView.activityView.isHidden = setter
     }
@@ -46,13 +59,6 @@ class SignInVC: UIViewController {
     func switchToMain(){
         let navigationController = UINavigationController(rootViewController: TodoListVC.create())
         AppDelegate.shared().window?.rootViewController = navigationController
-    }
-    
-    // MARK:- Public Methods
-    class func create() -> SignInVC {
-        let signInVC: SignInVC = UIViewController.create(storyboardName: Storyboards.authentication, identifier: ViewControllers.signInVC)
-        signInVC.presenter = SignInPresenter(view: signInVC)
-        return signInVC
     }
 }
 

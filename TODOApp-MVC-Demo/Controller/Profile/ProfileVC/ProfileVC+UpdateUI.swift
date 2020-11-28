@@ -11,19 +11,6 @@ import UIKit
 import Kingfisher
 extension ProfileVC {
    
-    
-    func presentAlert(_ title: String) {
-        show_Alert(title)
-    }
-    func viewLoader(setter: Bool){
-        profileView.activityView.isHidden = setter
-    }
-    func switchToSignIn(){
-        let navigationController = UINavigationController(rootViewController: SignInVC.create())
-        AppDelegate.shared().window?.rootViewController = navigationController
-        
-    }
-    
     @objc func openGallery(tabGesture: UITapGestureRecognizer) {
         self.setypImagePicker()
     }
@@ -32,7 +19,7 @@ extension ProfileVC {
     func editProfile(){
         presentEditAlert(title: "Edit Your Age", tfPlaceHolder: "Enter New Age", actionTitle: "Save") { (age) in
             self.profileView.activityView.isHidden = false
-            self.presenter.editProfile(age: age)
+            self.viewModel.editProfile(age: age)
         }
     }
     
@@ -54,28 +41,7 @@ extension ProfileVC {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    func downloadImage(with urlString : String , imageCompletionHandler: @escaping (UIImage?) -> Void){
-            guard let url = URL.init(string: urlString) else {
-                return  imageCompletionHandler(nil)
-            }
-            let resource = ImageResource(downloadURL: url)
-            
-            KingfisherManager.shared.retrieveImage(with: resource, options: nil, progressBlock: nil) { result in
-                switch result {
-                case .success(let value):
-                    imageCompletionHandler(value.image)
-                case .failure:
-                    imageCompletionHandler(nil)
-                }
-            }
-        }
-    
-    func setLabel(charaters: String){
-        profileView.activityView.isHidden = true
-        profileView.imageLabel.isHidden = false
-        profileView.imageLabel.text = charaters
-    }
-        
+   
 }
 
 
@@ -90,7 +56,7 @@ extension ProfileVC: UIImagePickerControllerDelegate, UINavigationControllerDele
         profileView.userImageView.image = image
         profileView.imageLabel.isHidden = true
         profileView.activityView.isHidden = false
-        presenter.uploadProfileImage(profileView.userImageView.image!)
+        viewModel.uploadProfileImage(profileView.userImageView.image!)
             picker.dismiss(animated: false, completion: nil)
         }
 }

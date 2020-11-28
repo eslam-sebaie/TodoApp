@@ -8,17 +8,52 @@
 
 import UIKit
 
-class ProfilePresenter {
+
+protocol profileViewModelProtocol {
+    func getProfileData()
+    func editProfile(age: String)
+    func logOut()
+    func uploadProfileImage(_ avatar: UIImage)
+    func send() -> (String,String,[String:String])
     
-    var view: ProfileVC!
+}
+
+class ProfileViewModel {
+
+    var view: ProfileVCProtocol!
     var profileDictionary = [String: String]()
-    
-    init(view: ProfileVC) {
+    var user = ""
+    var chars = ""
+    init(view: ProfileVCProtocol) {
         self.view = view
     }
-   
+
+    private func getCharacters(name: String) -> String{
+       let chars = name.components(separatedBy: " ").reduce("") { ($0 == "" ? "" : "\($0.first!)") + "\($1.first!)" }
+        return chars
+    }
     
-  
+    private func showingImage(chars: String, id: String){
+        if UserDefaultsManager.shared().imgLabel == true {
+            self.view.downloadImage(with :"\(URLs.base)user/\(id)/avatar"){image in
+                guard let image  = image else {
+                    self.view.setLabel(charaters: chars)
+                    return
+                }
+                self.view.setProfileView().userImageView.image = image
+                self.view.viewLoader(setter: true)
+            }
+        }
+        else {
+            self.view.setLabel(charaters: chars)
+        }
+        let pView = self.view.setProfileView()
+        pView.profileTableView.reloadData()
+        
+    }
+}
+
+extension ProfileViewModel: profileViewModelProtocol {
     func getProfileData(){
         
         APIManager.getProfile { (response) in
@@ -30,7 +65,8 @@ class ProfilePresenter {
                 self.profileDictionary["Email"] = result.email
                 self.profileDictionary["Age"] = "\(result.age)"
                 let firstCharcters = self.getCharacters(name: result.name)
-                self.view.profileDictionary = self.profileDictionary
+                self.user = result.id
+                self.chars = firstCharcters
                 self.showingImage(chars: firstCharcters, id: result.id)
             }
         }
@@ -57,25 +93,10 @@ class ProfilePresenter {
         }
     }
     
-    private func getCharacters(name: String) -> String{
-       let chars = name.components(separatedBy: " ").reduce("") { ($0 == "" ? "" : "\($0.first!)") + "\($1.first!)" }
-        return chars
+    func send() -> (String, String, [String : String]) {
+        return (chars, user , self.profileDictionary)
     }
     
-    private func showingImage(chars: String, id: String){
-        if UserDefaultsManager.shared().imgLabel == true {
-            self.view.downloadImage(with :"\(URLs.base)user/\(id)/avatar"){image in
-                guard let image  = image else {
-                    self.view.setLabel(charaters: chars)
-                    return
-                }
-                self.view.profileView.userImageView.image = image
-                self.view.viewLoader(setter: true)
-            }
-        }
-        else {
-            self.view.setLabel(charaters: chars)
-        }
-        self.view.profileView.profileTableView.reloadData()
-    }
+    
 }
+

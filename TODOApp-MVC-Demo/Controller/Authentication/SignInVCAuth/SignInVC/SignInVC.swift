@@ -7,8 +7,8 @@
 //
 
 import UIKit
-protocol SignInVCProtocol {
-    func viewLoader(setter: Bool)
+@objc protocol AuthVCProtocol {
+    @objc optional func viewLoader(setter: Bool)
     func presentAlert(_ title: String)
     func switchToMain()
 }
@@ -17,7 +17,7 @@ class SignInVC: UIViewController {
     // MARK:- Outlets
     @IBOutlet var signInView: SignInView!
     
-    var presenter: signInPresenterProtocol!
+    var viewModel: signInViewModelProtocol!
 
     // MARK:- Lifecycle methods
     override func viewDidLoad() {
@@ -28,7 +28,7 @@ class SignInVC: UIViewController {
     
     // MARK:- SignIn Button
     @IBAction func signInPressed(_ sender: Any) {
-        presenter.tryLogin(signInView.emailTextField.text!, signInView.passwordTextField.text!)
+        viewModel.tryLogin(signInView.emailTextField.text!, signInView.passwordTextField.text!)
     }
     
     
@@ -42,20 +42,22 @@ class SignInVC: UIViewController {
     // MARK:- Public Methods
     class func create() -> SignInVC {
         let signInVC: SignInVC = UIViewController.create(storyboardName: Storyboards.authentication, identifier: ViewControllers.signInVC)
-        signInVC.presenter = SignInPresenter(view: signInVC)
+        signInVC.viewModel = SignInViewModel(view: signInVC)
         return signInVC
     }
 }
 
-extension SignInVC: SignInVCProtocol{
+extension SignInVC: AuthVCProtocol{
+    
+    
     func viewLoader(setter: Bool){
         signInView.activityView.isHidden = setter
     }
- 
+
     func presentAlert(_ title: String) {
         show_Alert(title)
     }
-    
+
     func switchToMain(){
         let navigationController = UINavigationController(rootViewController: TodoListVC.create())
         AppDelegate.shared().window?.rootViewController = navigationController

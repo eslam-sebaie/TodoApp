@@ -8,25 +8,31 @@
 
 import UIKit
 
+protocol TodoVCProtocol {
+    func viewLoader(setter: Bool)
+    func presentAlert(_ title: String)
+    func switchToSignIn()
+    func setTodoView() -> TodoListView
+}
+
 class TodoListVC: UIViewController {
 
-   
-    
     @IBOutlet var todoView: TodoListView!
     var todoTasks = [AllTasks]()
     var index = 0
-    var presenter: TodoPresenter!
+    var viewModel: TodoViewModelProtocol!
     
     // MARK:- Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         determineHeight(todoView.mainView, identifier: HeightKeys.listHeight, heightNumber: 50)
         todoView.updateUI()
         
     }
     // MARK:- WillAppear Method
     override func viewWillAppear(_ animated: Bool) {
-        presenter.getList()
+        viewModel.getList()
     }
     
     // MARK:- ShowProfile Method
@@ -36,19 +42,19 @@ class TodoListVC: UIViewController {
     
     // MARK:- Logout Method
     @IBAction func logoutPressed(_ sender: Any) {
-        presenter.logOut()
+        viewModel.logOut()
     }
     
     // MARK:- Write ToDo Text Method
     @IBAction func sendPressed(_ sender: Any) {
-        presenter.sendTask(todoView.todoTextField.text!)
+        viewModel.sendTask(todoView.todoTextField.text!)
     }
     
 
     // MARK:- Public Methods
     class func create() -> TodoListVC {
         let todoListVC: TodoListVC = UIViewController.create(storyboardName: Storyboards.main, identifier: ViewControllers.todoListVC)
-        todoListVC.presenter = TodoPresenter(view: todoListVC)
+        todoListVC.viewModel = TodoViewModel(view: todoListVC)
         return todoListVC
     }
 }
@@ -59,8 +65,22 @@ extension TodoListVC: showTrashDelegate {
         index = indexPath!.row
         
     }
-    
-    
 }
 
+extension TodoListVC: TodoVCProtocol {
+    func setTodoView() -> TodoListView {
+        return todoView
+    }
+    func presentAlert(_ title: String) {
+        show_Alert(title)
+    }
+    func viewLoader(setter: Bool){
+        todoView.activityView.isHidden = setter
+    }
+    func switchToSignIn(){
+        let navigationController = UINavigationController(rootViewController: SignInVC.create())
+        AppDelegate.shared().window?.rootViewController = navigationController
+    }
+    
+}
 

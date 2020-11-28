@@ -7,11 +7,19 @@
 //
 
 import Foundation
-class TodoPresenter {
+protocol TodoViewModelProtocol {
+    func getList()
+    func logOut()
+    func sendTask(_ description: String?)
+    func deleteTask(_ id: String)
+    func sendTodo(_ description: String?)
+    func sendTasks()-> [AllTasks]
+}
+class TodoViewModel {
     
-    var view: TodoListVC!
-    
-    init(view: TodoListVC) {
+    var view: TodoVCProtocol!
+    var tasks = [AllTasks]()
+    init(view: TodoVCProtocol) {
         self.view = view
     }
     
@@ -22,9 +30,9 @@ class TodoPresenter {
          case .failure( _):
             self.view.presentAlert("ERROR")
          case .success(let Task):
-            self.view.todoTasks = Task.data
+            self.tasks = Task.data
             self.view.viewLoader(setter: true)
-            self.view.todoView.todoTableView.reloadData()
+            self.view.setTodoView().todoTableView.reloadData()
             }
         }
     }
@@ -60,11 +68,18 @@ class TodoPresenter {
         
     
 }
-extension TodoPresenter {
+extension TodoViewModel {
     func sendTodo(_ description: String?){
         ListAPIManager.addTask(description: description!) {
             self.getList()
-            self.view.todoView.todoTextField.text = ""
+            self.view.setTodoView().todoTextField.text = ""
         }
     }
+}
+extension TodoViewModel: TodoViewModelProtocol {
+    func sendTasks() -> [AllTasks] {
+        return tasks
+    }
+    
+    
 }

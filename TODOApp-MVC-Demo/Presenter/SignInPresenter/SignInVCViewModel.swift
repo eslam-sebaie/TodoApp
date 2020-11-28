@@ -7,13 +7,13 @@
 //
 
 import Foundation
-protocol signInPresenterProtocol {
+protocol signInViewModelProtocol {
     func tryLogin(_ email: String, _ password: String)
 }
-class SignInPresenter {
+class SignInViewModel {
 
-    var view: SignInVCProtocol!
-    init(view: SignInVCProtocol) {
+    var view: AuthVCProtocol!
+    init(view: AuthVCProtocol) {
         self.view = view
     }
     
@@ -37,20 +37,20 @@ class SignInPresenter {
             switch response {
             case .failure( _):
                 self.view.presentAlert("Wonge Email Or Password.")
-                self.view.viewLoader(setter: true)
+                self.view.viewLoader!(setter: true)
             case .success(let result):
                 UserDefaultsManager.shared().token = result.token
-                self.view.viewLoader(setter: true)
+                self.view.viewLoader!(setter: true)
                 self.view.switchToMain()
             }
         }
     }
 }
 
-extension SignInPresenter: signInPresenterProtocol {
+extension SignInViewModel: signInViewModelProtocol {
     func tryLogin(_ email: String, _ password: String){
         if valid(email: email, password: password) {
-            self.view.viewLoader(setter: false)
+            self.view.viewLoader!(setter: false)
             login(email, password)
         }
     }

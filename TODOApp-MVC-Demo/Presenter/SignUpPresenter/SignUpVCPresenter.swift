@@ -7,12 +7,14 @@
 //
 
 import Foundation
-
-class SignUpPresenter {
+protocol SignUpVCViewModelProtocol {
+    func trySignUp(_ name: String,_ email: String, _ password: String, _ age:String)
+}
+class SignUpViewModel {
     
-    var view: SignUpVC!
+    var view: AuthVCProtocol!
     
-    init(view: SignUpVC) {
+    init(view: AuthVCProtocol) {
         self.view = view
     }
     
@@ -29,27 +31,28 @@ class SignUpPresenter {
                 
         }
     }
-
+    func signUp(_ name: String,_ email: String, _ password: String, _ age:String){
+       APIManager.signUp(name: name, email: email, password: password, age: Int(age)!) { (err, success) in
+           if err != nil {
+               self.view.presentAlert("InvalidData.")
+               self.view.viewLoader!(setter: true)
+           }
+           else {
+               self.view.viewLoader!(setter: true)
+               self.view.switchToMain()
+           }
+       }
+   }
     
+    
+}
+extension SignUpViewModel: SignUpVCViewModelProtocol {
+     
     func trySignUp(_ name: String,_ email: String, _ password: String, _ age:String){
         if valid(name: name, email: email, password: password, age: age) {
-            self.view.viewLoader(setter: false)
+            self.view.viewLoader!(setter: false)
             signUp(name, email, password, age)
         }
        
-    }
-}
-extension SignUpPresenter {
-     func signUp(_ name: String,_ email: String, _ password: String, _ age:String){
-        APIManager.signUp(name: name, email: email, password: password, age: Int(age)!) { (err, success) in
-            if err != nil {
-                self.view.presentAlert("InvalidData.")
-                self.view.viewLoader(setter: true)
-            }
-            else {
-                self.view.viewLoader(setter: true)
-                self.view.switchToSignIn()
-            }
-        }
     }
 }

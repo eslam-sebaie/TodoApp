@@ -16,7 +16,7 @@
 		962D3BF6254C95DF003E5EB5 /* TaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962D3BF5254C95DF003E5EB5 /* TaskData.swift */; };
 		962D3C06254CA7A8003E5EB5 /* AllTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962D3C05254CA7A8003E5EB5 /* AllTasks.swift */; };
 		9647ACC3255EA7C6003554F5 /* Trash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9647ACC2255EA7C6003554F5 /* Trash.swift */; };
-		9647ACC8255EBB8D003554F5 /* SignInVCPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9647ACC7255EBB8D003554F5 /* SignInVCPresenter.swift */; };
+		9647ACC8255EBB8D003554F5 /* SignInVCViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9647ACC7255EBB8D003554F5 /* SignInVCViewModel.swift */; };
 		9647ACD2255EC21D003554F5 /* SignUpVCPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9647ACD1255EC21D003554F5 /* SignUpVCPresenter.swift */; };
 		9647ACD9255EC660003554F5 /* TodoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9647ACD8255EC660003554F5 /* TodoPresenter.swift */; };
 		9647ACE1255ECC79003554F5 /* ProfileVCPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9647ACE0255ECC79003554F5 /* ProfileVCPresenter.swift */; };
@@ -58,7 +58,7 @@
 		962D3BF5254C95DF003E5EB5 /* TaskData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskData.swift; sourceTree = "<group>"; };
 		962D3C05254CA7A8003E5EB5 /* AllTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTasks.swift; sourceTree = "<group>"; };
 		9647ACC2255EA7C6003554F5 /* Trash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trash.swift; sourceTree = "<group>"; };
-		9647ACC7255EBB8D003554F5 /* SignInVCPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVCPresenter.swift; sourceTree = "<group>"; };
+		9647ACC7255EBB8D003554F5 /* SignInVCViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVCViewModel.swift; sourceTree = "<group>"; };
 		9647ACD1255EC21D003554F5 /* SignUpVCPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVCPresenter.swift; sourceTree = "<group>"; };
 		9647ACD8255EC660003554F5 /* TodoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoPresenter.swift; sourceTree = "<group>"; };
 		9647ACE0255ECC79003554F5 /* ProfileVCPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVCPresenter.swift; sourceTree = "<group>"; };
@@ -176,7 +176,7 @@
 		9647ACC6255EBAFA003554F5 /* SignInPresenter */ = {
 			isa = PBXGroup;
 			children = (
-				9647ACC7255EBB8D003554F5 /* SignInVCPresenter.swift */,
+				9647ACC7255EBB8D003554F5 /* SignInVCViewModel.swift */,
 			);
 			path = SignInPresenter;
 			sourceTree = "<group>";
@@ -528,7 +528,7 @@
 				96D8B5F9255B0700002117E9 /* APIRouter.swift in Sources */,
 				96C433DB25542321006E62BB /* UIViewController+ImageView.swift in Sources */,
 				962D3BF0254C8911003E5EB5 /* ListAPIManager.swift in Sources */,
-				9647ACC8255EBB8D003554F5 /* SignInVCPresenter.swift in Sources */,
+				9647ACC8255EBB8D003554F5 /* SignInVCViewModel.swift in Sources */,
 				962D3BEC254C8840003E5EB5 /* TodoVC+TableView.swift in Sources */,
 				962D3BD8254C72A2003E5EB5 /* UIViewContrroller+UIView.swift in Sources */,
 				B76E56BF2548AFA000C13D43 /* AuthAPIManager.swift in Sources */,

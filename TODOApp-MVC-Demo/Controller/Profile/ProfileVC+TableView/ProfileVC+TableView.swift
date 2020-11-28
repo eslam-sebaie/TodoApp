@@ -16,11 +16,14 @@ extension ProfileVC: UITableViewDataSource{
     
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = profileView.profileTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ProfileTableViewCell
+     
+        tupe = viewModel.send()
+        let dic = tupe.2
         cell.profileView.setupViews(radius: 16)
         cell.profileView.dropShadow()
         let header = headArray[indexPath.row]
         cell.nameLabel.text = header
-        cell.profileData.text = profileDictionary[header]
+        cell.profileData.text = dic[header]
         return cell
     }
     

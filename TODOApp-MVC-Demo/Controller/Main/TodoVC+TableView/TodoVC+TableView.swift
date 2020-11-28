@@ -11,6 +11,7 @@ import UIKit
 extension TodoListVC: UITableViewDataSource {
     // MARK:- TableView DataSource Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        todoTasks = viewModel.sendTasks()
         determineHeight(todoView.mainView, identifier: HeightKeys.listHeight, heightNumber: 50 + (todoTasks.count * 60))
       
         return todoTasks.count

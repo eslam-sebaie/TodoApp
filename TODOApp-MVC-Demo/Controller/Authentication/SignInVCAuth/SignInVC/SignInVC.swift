@@ -12,6 +12,23 @@ import UIKit
     func presentAlert(_ title: String)
     func switchToMain()
 }
+
+protocol gotoSignInPage: class {
+    func switchToSignIn()
+}
+
+protocol gotoMainPage: class {
+    func switchToMain()
+}
+
+protocol goToSignUpPage: class {
+    func switchToSignUp()
+}
+
+protocol GotoProfileScreen: class {
+    func switchToProfile()
+}
+
 class SignInVC: UIViewController {
 
     // MARK:- Outlets
@@ -19,6 +36,11 @@ class SignInVC: UIViewController {
     
     var viewModel: signInViewModelProtocol!
 
+    weak var delegate: goToSignUpPage?
+    
+    weak var signInDelegate: gotoSignInPage?
+    
+    weak var mainDelegate: gotoMainPage?
     // MARK:- Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,8 +56,7 @@ class SignInVC: UIViewController {
     
     // MARK:- SignUP Button
     @IBAction func signUpPressed(_ sender: Any) {
-        let signUp = SignUpVC.create()
-        self.present(signUp, animated: true, completion: nil)
+        self.delegate?.switchToSignUp()
     }
    
     
@@ -59,10 +80,12 @@ extension SignInVC: AuthVCProtocol{
     }
 
     func switchToMain(){
-        let navigationController = UINavigationController(rootViewController: TodoListVC.create())
-        AppDelegate.shared().window?.rootViewController = navigationController
+        self.mainDelegate?.switchToMain()
+//        let navigationController = UINavigationController(rootViewController: TodoListVC.create())
+//        AppDelegate.shared().window?.rootViewController = navigationController
     }
 }
+
 
 
 

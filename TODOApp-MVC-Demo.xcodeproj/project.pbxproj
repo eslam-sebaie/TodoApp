@@ -21,6 +21,7 @@
 		9647ACD9255EC660003554F5 /* TodoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9647ACD8255EC660003554F5 /* TodoViewModel.swift */; };
 		9647ACE1255ECC79003554F5 /* ProfileVCViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9647ACE0255ECC79003554F5 /* ProfileVCViewModel.swift */; };
 		969951912568059A009AE4D7 /* validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969951902568059A009AE4D7 /* validation.swift */; };
+		969CAAFC257BAF3F00C5DEB7 /* AppStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969CAAFB257BAF3F00C5DEB7 /* AppStateManager.swift */; };
 		969E63B7256EDAAD00A0E3B5 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969E63B6256EDAAD00A0E3B5 /* SignInView.swift */; };
 		969E63BC256EDDC500A0E3B5 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969E63BB256EDDC500A0E3B5 /* SignUpView.swift */; };
 		969E63C0256EE07900A0E3B5 /* TodoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969E63BF256EE07900A0E3B5 /* TodoListView.swift */; };
@@ -63,6 +64,7 @@
 		9647ACD8255EC660003554F5 /* TodoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewModel.swift; sourceTree = "<group>"; };
 		9647ACE0255ECC79003554F5 /* ProfileVCViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVCViewModel.swift; sourceTree = "<group>"; };
 		969951902568059A009AE4D7 /* validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = validation.swift; sourceTree = "<group>"; };
+		969CAAFB257BAF3F00C5DEB7 /* AppStateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateManager.swift; sourceTree = "<group>"; };
 		969E63B6256EDAAD00A0E3B5 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		969E63BB256EDDC500A0E3B5 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		969E63BF256EE07900A0E3B5 /* TodoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListView.swift; sourceTree = "<group>"; };
@@ -156,12 +158,13 @@
 			path = "TodoVC+TableView";
 			sourceTree = "<group>";
 		};
-		962D3C08254CA9F0003E5EB5 /* Core */ = {
+		962D3C08254CA9F0003E5EB5 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
 				B76E56902548A24A00C13D43 /* AppDelegate.swift */,
+				969CAAFB257BAF3F00C5DEB7 /* AppStateManager.swift */,
 			);
-			path = Core;
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		9647ACC5255EBAE3003554F5 /* SignInVC */ = {
@@ -274,7 +277,7 @@
 		B76E568F2548A24A00C13D43 /* TODOApp-MVC-Demo */ = {
 			isa = PBXGroup;
 			children = (
-				962D3C08254CA9F0003E5EB5 /* Core */,
+				962D3C08254CA9F0003E5EB5 /* Shared */,
 				B76E56A42548A2B400C13D43 /* Networking */,
 				B76E56A52548A2BE00C13D43 /* Managers */,
 				B76E56AB2548A32D00C13D43 /* Utilities */,
@@ -535,6 +538,7 @@
 				B76E56912548A24A00C13D43 /* AppDelegate.swift in Sources */,
 				B76E56C52548BACC00C13D43 /* UserData.swift in Sources */,
 				B76E56B92548A76600C13D43 /* SignInVC.swift in Sources */,
+				969CAAFC257BAF3F00C5DEB7 /* AppStateManager.swift in Sources */,
 				B76E56BC2548A84600C13D43 /* SignUpVC.swift in Sources */,
 				B76E56C72548BEE100C13D43 /* UserDefaultsManager.swift in Sources */,
 				96B3CC89254DB0A000EE0471 /* ProfileVC+TableView.swift in Sources */,

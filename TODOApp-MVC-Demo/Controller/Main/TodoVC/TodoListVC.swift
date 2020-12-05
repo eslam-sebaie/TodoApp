@@ -15,13 +15,15 @@ protocol TodoVCProtocol {
     func setTodoView() -> TodoListView
 }
 
+
 class TodoListVC: UIViewController {
 
     @IBOutlet var todoView: TodoListView!
     var todoTasks = [AllTasks]()
     var index = 0
     var viewModel: TodoViewModelProtocol!
-    
+    weak var profileDelegate: GotoProfileScreen?
+    weak var signInDelegate: gotoSignInPage?
     // MARK:- Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +39,8 @@ class TodoListVC: UIViewController {
     
     // MARK:- ShowProfile Method
     @IBAction func profilePressed(_ sender: Any) {
-        self.present(ProfileVC.create(), animated: true, completion: nil)
+        self.profileDelegate?.switchToProfile()
+//        self.present(ProfileVC.create(), animated: true, completion: nil)
     }
     
     // MARK:- Logout Method
@@ -78,8 +81,9 @@ extension TodoListVC: TodoVCProtocol {
         todoView.activityView.isHidden = setter
     }
     func switchToSignIn(){
-        let navigationController = UINavigationController(rootViewController: SignInVC.create())
-        AppDelegate.shared().window?.rootViewController = navigationController
+        self.signInDelegate?.switchToSignIn()
+//        let navigationController = UINavigationController(rootViewController: SignInVC.create())
+//        AppDelegate.shared().window?.rootViewController = navigationController
     }
     
 }

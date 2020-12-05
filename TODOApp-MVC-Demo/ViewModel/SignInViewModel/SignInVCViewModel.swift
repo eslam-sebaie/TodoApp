@@ -10,12 +10,17 @@ import Foundation
 protocol signInViewModelProtocol {
     func tryLogin(_ email: String, _ password: String)
 }
+
+
 class SignInViewModel {
 
     var view: AuthVCProtocol!
     init(view: AuthVCProtocol) {
         self.view = view
     }
+
+    
+    
     
     private func valid(email:String?, password: String?) -> Bool {
         let response = Validation.shared.validate(values: (type: Validation.ValidationType.email, email!),(Validation.ValidationType.password, password!))

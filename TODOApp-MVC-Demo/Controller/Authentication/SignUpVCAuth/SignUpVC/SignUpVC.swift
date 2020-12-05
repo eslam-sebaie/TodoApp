@@ -12,7 +12,7 @@ class SignUpVC: UIViewController {
  
     @IBOutlet var signUpView: SignUpView!
     var viewModel: SignUpVCViewModelProtocol!
-    
+    weak var signInDelegate: gotoSignInPage?
     // MARK:- Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +36,7 @@ class SignUpVC: UIViewController {
 
 extension SignUpVC: AuthVCProtocol{
     func switchToMain() {
-        let navigationController = UINavigationController(rootViewController: SignInVC.create())
-        AppDelegate.shared().window?.rootViewController = navigationController
+        self.signInDelegate?.switchToSignIn()
     }
     
     func viewLoader(setter: Bool){

@@ -17,6 +17,8 @@ protocol ProfileVCProtocol {
     func setProfileView() -> ProfileView
 
 }
+
+
 class ProfileVC: UIViewController {
     
     // MARK:- Outlets
@@ -30,6 +32,8 @@ class ProfileVC: UIViewController {
     var Chars = ""
     var viewModel: profileViewModelProtocol!
     var tupe: (String, String, [String:String]) = ("","",[:])
+    
+    weak var signInDelegate: gotoSignInPage?
     // MARK:- LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,8 +82,9 @@ extension ProfileVC: ProfileVCProtocol{
         profileView.activityView.isHidden = setter
     }
     func switchToSignIn(){
-        let navigationController = UINavigationController(rootViewController: SignInVC.create())
-        AppDelegate.shared().window?.rootViewController = navigationController
+        self.signInDelegate?.switchToSignIn()
+//        let navigationController = UINavigationController(rootViewController: SignInVC.create())
+//        AppDelegate.shared().window?.rootViewController = navigationController
         
     }
     func downloadImage(with urlString : String , imageCompletionHandler: @escaping (UIImage?) -> Void){
